@@ -7,11 +7,10 @@
 	</parent>
 	<groupId>org.ow2.authzforce</groupId>
 	<artifactId>authzforce-ce-parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
-	<url>${project.url}</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Dynamic computation of current year for license headers -->
@@ -20,6 +19,7 @@
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
 	</properties>
+	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
 	<licenses>
 		<license>
