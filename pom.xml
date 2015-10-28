@@ -16,8 +16,10 @@
 		<!-- Dynamic computation of current year for license headers -->
 		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 		<currentYear>${maven.build.timestamp}</currentYear>
+		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
 	</properties>
+	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
 	<licenses>
 		<license>
@@ -33,7 +35,6 @@
 			<organizationUrl>http://thalesgroup.com</organizationUrl>
 		</developer>
 	</developers>
-	<url>https://tuleap.ow2.org/projects/authzforce</url>
 	<scm>
 		<connection>scm:git:${git.url.base}/parent.git</connection>
 		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
