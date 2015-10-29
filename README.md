@@ -6,7 +6,7 @@ Authzforce Community Edition - parent project
 ```
 $ mvn -Dhttps.proxyHost=MY_USERNAME:PASSWORD@proxyhostname -Dhttps.proxyPort=3128 jgitflow:release-start
 ```
-2. Make sure the project builds OK in Travis CI.
+2. Make sure the new release branch created builds OK in Travis CI.
 3. To perform the release (example using a HTTP proxy):
 ```
 $ mvn -Dhttps.proxyHost=MY_USERNAME:PASSWORD@proxyhostname -Dhttps.proxyPort=3128 jgitflow:release-finish
