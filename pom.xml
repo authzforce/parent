@@ -67,8 +67,9 @@
 					<artifactId>maven-jaxb2-plugin</artifactId>
 					<version>0.12.3</version>
 					<configuration>
+						<debug>false</debug>
 						<strict>false</strict>
-						<verbose>true</verbose>
+						<verbose>false</verbose>
 						<removeOldOutput>true</removeOldOutput>
 					</configuration>
 				</plugin>
