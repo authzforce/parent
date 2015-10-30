@@ -65,7 +65,7 @@
 				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
-					<version>0.12.3</version>
+					<version>0.13.0</version>
 					<configuration>
 						<debug>false</debug>
 						<strict>false</strict>
