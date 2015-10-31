@@ -18,6 +18,8 @@
 		<currentYear>${maven.build.timestamp}</currentYear>
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
+		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
 	</properties>
 	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -42,6 +44,15 @@
 		<url>${git.url.base}/parent</url>
 	</scm>
 	<!-- distributionManagement defined in oss-parent POM already -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${jaxb2-basics.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
