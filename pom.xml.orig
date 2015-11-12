@@ -1,0 +1,417 @@
+<<<<<<< HEAD
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+	<groupId>org.ow2.authzforce</groupId>
+	<artifactId>authzforce-ce-parent</artifactId>
+	<version>1.0.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Dynamic computation of current year for license headers -->
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+		<currentYear>${maven.build.timestamp}</currentYear>
+		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
+		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<!-- Controls maven compiler plugin -source -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
+		<maven.compiler.target>1.7</maven.compiler.target>
+	</properties>
+	<url>${project.url}</url>
+	<inceptionYear>2012</inceptionYear>
+	<licenses>
+		<license>
+			<name>GNU General Public License</name>
+			<url>http://www.gnu.org/licenses/gpl.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>The AuthZForce Team</name>
+			<email>http://scr.im/azteam</email>
+			<organization>Thales Services</organization>
+			<organizationUrl>http://thalesgroup.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:${git.url.base}/parent.git</connection>
+		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>${git.url.base}/parent</url>
+	</scm>
+	<!-- distributionManagement defined in oss-parent POM already -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<properties>
+							<!-- Values to be substituted in template -->
+							<inceptionYear>${project.inceptionYear}</inceptionYear>
+							<currentYear>${currentYear}</currentYear>
+							<copyrightOwner>Thales Services SAS</copyrightOwner>
+							<projectName>AuthZForce CE</projectName>
+						</properties>
+						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
+						<header>license/thales-gpl.txt</header>
+						<strictCheck>true</strictCheck>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.13.0</version>
+					<configuration>
+						<debug>false</debug>
+						<strict>false</strict>
+						<verbose>false</verbose>
+						<removeOldOutput>true</removeOldOutput>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.7</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.5</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.3</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>ossrh</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<!-- For safety reasons, the actual release should be a manual step (through Sonatype's Nexus GUI) to allow for final check. -->
+						<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
+					<groupId>external.atlassian.jgitflow</groupId>
+					<artifactId>jgitflow-maven-plugin</artifactId>
+					<version>1.0-m5.1</version>
+					<configuration>
+						<flowInitContext>
+							<versionTagPrefix>release-</versionTagPrefix>
+						</flowInitContext>
+						<pushReleases>true</pushReleases>
+						<useReleaseProfile>false</useReleaseProfile>
+						<!--For releases, use the release profile defined in Sonatype's parent POM instead of default release profile defined in Maven super POM. -->
+						<arguments>-Psonatype-oss-release</arguments>
+						<noDeploy>false</noDeploy>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<profiles>
+		<profile>
+			<!-- RELEASE PROFILE. Override oss-parent release profile to add nexus-staging-maven-plugin. To perform a release, run: $ mvn jgitflow:release-finish -->
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
+=======
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
+	<groupId>org.ow2.authzforce</groupId>
+	<artifactId>authzforce-ce-parent</artifactId>
+	<version>3.3.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Dynamic computation of current year for license headers -->
+		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+		<currentYear>${maven.build.timestamp}</currentYear>
+		<artifactId.prefix>authzforce-ce</artifactId.prefix>
+		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
+		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
+		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
+	</properties>
+	<url>${project.url}</url>
+	<inceptionYear>2012</inceptionYear>
+	<licenses>
+		<license>
+			<name>GNU General Public License</name>
+			<url>http://www.gnu.org/licenses/gpl.txt</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>The AuthZForce Team</name>
+			<email>http://scr.im/azteam</email>
+			<organization>Thales Services</organization>
+			<organizationUrl>http://thalesgroup.com</organizationUrl>
+		</developer>
+	</developers>
+	<scm>
+		<connection>scm:git:${git.url.base}/parent.git</connection>
+		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>${git.url.base}/parent</url>
+	</scm>
+	<!-- distributionManagement defined in oss-parent POM already -->
+	<modules>
+		<!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+		<module>xmlns-model</module>
+		<module>atom-model</module>
+		<module>xacml-model</module>
+		<module>pdp-ext-model</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${jaxb2-basics.version}</version>
+			</dependency>
+			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-atom-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- /Common AuthZForce CE dependencies -->
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>2.7</version>
+					<configuration>
+						<properties>
+							<!-- Values to be substituted in template -->
+							<inceptionYear>${project.inceptionYear}</inceptionYear>
+							<currentYear>${currentYear}</currentYear>
+							<copyrightOwner>Thales Services SAS</copyrightOwner>
+							<projectName>AuthZForce CE</projectName>
+						</properties>
+						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
+						<header>../license/thales-gpl.txt</header>
+						<strictCheck>true</strictCheck>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jvnet.jaxb2.maven2</groupId>
+					<artifactId>maven-jaxb2-plugin</artifactId>
+					<version>0.13.0</version>
+					<configuration>
+						<debug>false</debug>
+						<strict>false</strict>
+						<verbose>false</verbose>
+						<removeOldOutput>true</removeOldOutput>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.1.2</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.7</version>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<!-- Using same description as in oss-parent POM -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.5</version>
+					<executions>
+						<execution>
+							<id>sign-artifacts</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>1.6.3</version>
+					<extensions>true</extensions>
+					<configuration>
+						<serverId>ossrh</serverId>
+						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+						<!-- For safety reasons, the actual release should be a manual step (through Sonatype's Nexus GUI) to allow for final check. -->
+						<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
+					<groupId>external.atlassian.jgitflow</groupId>
+					<artifactId>jgitflow-maven-plugin</artifactId>
+					<version>1.0-m5.1</version>
+					<configuration>
+						<flowInitContext>
+							<versionTagPrefix>release-</versionTagPrefix>
+						</flowInitContext>
+						<pushReleases>true</pushReleases>
+						<useReleaseProfile>false</useReleaseProfile>
+						<!--For releases, use the release profile defined in Sonatype's parent POM instead of default release profile defined in Maven super POM. -->
+						<arguments>-Psonatype-oss-release</arguments>
+						<noDeploy>false</noDeploy>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<profiles>
+		<profile>
+			<!-- RELEASE PROFILE. Override oss-parent release profile to add nexus-staging-maven-plugin. To perform a release, run: $ mvn jgitflow:release-finish -->
+			<id>sonatype-oss-release</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.mycila</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-source-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
+>>>>>>> ae167d76fdd429f89a311f214d36cea94886053f

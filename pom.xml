@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>org.ow2.authzforce</groupId>
 	<artifactId>authzforce-ce-parent</artifactId>
-	<version>1.0.3-SNAPSHOT</version>
+	<version>3.3.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
@@ -16,8 +16,11 @@
 		<!-- Dynamic computation of current year for license headers -->
 		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 		<currentYear>${maven.build.timestamp}</currentYear>
+		<artifactId.prefix>authzforce-ce</artifactId.prefix>
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
+		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
 		<!-- Controls maven compiler plugin -source -->
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
@@ -46,6 +49,44 @@
 		<url>${git.url.base}/parent</url>
 	</scm>
 	<!-- distributionManagement defined in oss-parent POM already -->
+	<modules>
+		<!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+		<module>xmlns-model</module>
+		<module>atom-model</module>
+		<module>xacml-model</module>
+		<module>pdp-ext-model</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${jaxb2-basics.version}</version>
+			</dependency>
+			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-atom-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- /Common AuthZForce CE dependencies -->
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -62,7 +103,7 @@
 							<projectName>AuthZForce CE</projectName>
 						</properties>
 						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-						<header>license/thales-gpl.txt</header>
+						<header>../license/thales-gpl.txt</header>
 						<strictCheck>true</strictCheck>
 					</configuration>
 				</plugin>
