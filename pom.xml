@@ -18,6 +18,10 @@
 		<currentYear>${maven.build.timestamp}</currentYear>
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<!-- Controls maven compiler plugin -source -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
+		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
 	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -71,15 +75,6 @@
 						<strict>false</strict>
 						<verbose>false</verbose>
 						<removeOldOutput>true</removeOldOutput>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
-					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
 					</configuration>
 				</plugin>
 				<plugin>
