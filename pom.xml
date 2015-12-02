@@ -13,6 +13,10 @@
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Controls maven compiler plugin -source -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<!-- Dynamic computation of current year for license headers -->
 		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 		<currentYear>${maven.build.timestamp}</currentYear>
@@ -114,6 +118,28 @@
 				</exclusions>
 			</dependency>
 			<!-- /Third party dependencies -->
+			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-atom-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- /Common AuthZForce CE dependencies -->
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -131,6 +157,8 @@
 							<copyrightOwner>Thales Services SAS</copyrightOwner>
 							<projectName>AuthZForce CE</projectName>
 						</properties>
+						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
+						<header>../license/thales-gpl.txt</header>
 						<strictCheck>true</strictCheck>
 					</configuration>
 				</plugin>
