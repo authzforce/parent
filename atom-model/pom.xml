@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.ow2.authzforce</groupId>
 		<artifactId>authzforce-ce-parent</artifactId>
-		<version>3.3.3-SNAPSHOT</version>
+		<version>3.3.3</version>
 	</parent>
 	<artifactId>authzforce-ce-atom-model</artifactId>
 	<packaging>jar</packaging>
