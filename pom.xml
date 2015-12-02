@@ -7,17 +7,27 @@
 	</parent>
 	<groupId>org.ow2.authzforce</groupId>
 	<artifactId>authzforce-ce-parent</artifactId>
-	<version>1.0.2</version>
+	<version>3.3.3</version>
 	<packaging>pom</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Controls maven compiler plugin -source -->
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<!-- Dynamic computation of current year for license headers -->
 		<maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
 		<currentYear>${maven.build.timestamp}</currentYear>
+		<artifactId.prefix>authzforce-ce</artifactId.prefix>
+		<!-- Fix the project URL for all Authzforce project -->
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
+		<!-- Fix the project groupId for all Authzforce project -->
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
+		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
+		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
+		<slf4j.version>1.7.6</slf4j.version>
 	</properties>
 	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -42,6 +52,96 @@
 		<url>${git.url.base}/parent</url>
 	</scm>
 	<!-- distributionManagement defined in oss-parent POM already -->
+	<modules>
+		<!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+		<module>xmlns-model</module>
+		<module>atom-model</module>
+		<module>xacml-model</module>
+		<module>pdp-ext-model</module>
+	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Third party dependencies -->
+			<dependency>
+				<groupId>org.jvnet.jaxb2_commons</groupId>
+				<artifactId>jaxb2-basics-runtime</artifactId>
+				<version>${jaxb2-basics.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring dependencies 
+					used by other Authzforce projects. -->
+				<groupId>org.logback-extensions</groupId>
+				<artifactId>logback-ext-spring</artifactId>
+				<version>0.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<!-- This version must use the same version of slfj-api used by 'logback-classic' above. -->
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<!-- This version must match the version used by 'logback-ext-spring' above. -->
+				<version>3.2.2.RELEASE</version>
+				<exclusions>
+					<exclusion>
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.ws</groupId>
+				<artifactId>spring-xml</artifactId>
+				<!-- This version must use the same version of spring-context used by 'logback-ext-spring' above. -->
+				<version>2.1.3.RELEASE</version>
+				<exclusions>
+					<exclusion>
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- /Third party dependencies -->
+			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-atom-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<!-- /Common AuthZForce CE dependencies -->
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -58,7 +158,7 @@
 							<projectName>AuthZForce CE</projectName>
 						</properties>
 						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-						<header>license/thales-gpl.txt</header>
+						<header>../license/thales-gpl.txt</header>
 						<strictCheck>true</strictCheck>
 					</configuration>
 				</plugin>

@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.ow2.authzforce</groupId>
+		<artifactId>authzforce-ce-parent</artifactId>
+		<version>3.3.3</version>
+	</parent>
+	<artifactId>authzforce-ce-xmlns-model</artifactId>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>AuthZForce - "xml:" Namespace Model. XML schema from http://www.w3.org/2001/xml.xsd and corresponding XJC episode that is useable for JAXB class generation from XSD importing xml.xsd.</description>
+	<url>${project.url}</url>
+	<scm>
+		<connection>scm:git:${git.url.base}/parent.git</connection>
+		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>${git.url.base}/parent</url>
+	</scm>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<configuration>
+					<verbose>false</verbose>
+					<extension>true</extension>
+					<strict>true</strict>
+					<schemaDirectory>src/main/resources</schemaDirectory>
+					<schemaIncludes>
+						<include>xml.xsd</include>
+					</schemaIncludes>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

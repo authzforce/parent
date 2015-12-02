@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" elementFormDefault="qualified">
+
+	<jaxb:globalBindings fixedAttributeAsConstantProperty="true">
+		<xjc:simple />
+	</jaxb:globalBindings>
+</jaxb:bindings>
