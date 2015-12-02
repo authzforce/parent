@@ -3,12 +3,12 @@
 	as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. AuthZForce is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
 	without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public 
 	License along with AuthZForce CE. If not, see <http://www.gnu.org/licenses/>. -->
-<xs:schema xmlns:tns="http://authzforce.github.io/commons/xmlns/pdp/ext" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://authzforce.github.io/commons/xmlns/pdp/ext"
+<xs:schema xmlns:tns="http://authzforce.github.io/xmlns/pdp/ext" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://authzforce.github.io/xmlns/pdp/ext"
 	version="3.3">
 	<xs:annotation>
 		<xs:documentation xml:lang="en">
 			Base data model for Authorization PDP extensions such as
-			attribute finders.
+			attribute providers.
 			Extend data types defined here to provide XML
 			definitions for such extensions.
 			(NB: schema version must match Maven project's Major and Minor versions.)
@@ -28,10 +28,10 @@
 			</xs:annotation>
 		</xs:attribute>
 	</xs:complexType>
-	<xs:complexType abstract="true" name="AbstractAttributeFinder">
+	<xs:complexType abstract="true" name="AbstractAttributeProvider">
 		<xs:annotation>
 			<xs:documentation>
-				Attribute Finder base type. All 'Attribute Finder Modules' should extend this
+				Attribute Provider base type. All 'Attribute Provider Modules' should extend this
 				type.
 			</xs:documentation>
 		</xs:annotation>
@@ -39,10 +39,10 @@
 			<xs:extension base="tns:AbstractPdpExtension" />
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:complexType abstract="true" name="AbstractPolicyFinder">
+	<xs:complexType abstract="true" name="AbstractPolicyProvider">
 		<xs:annotation>
 			<xs:documentation>
-				Attribute Finder base type. All 'Policy Finder Modules' should extend this
+				Attribute Provider base type. All 'Policy Provider Modules' should extend this
 				type.
 			</xs:documentation>
 		</xs:annotation>

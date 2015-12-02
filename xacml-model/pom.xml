@@ -19,6 +19,7 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
@@ -31,6 +32,7 @@
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
 				<configuration>
+					<header>license/thales-gpl.txt</header>
 					<skipExistingHeaders>true</skipExistingHeaders>
 					<includes>
 						<include>src/main/java/**</include>
@@ -67,6 +69,8 @@
 						<arg>-XhashCode</arg>
 						<arg>-XtoString</arg>
 						<arg>-Xvalue-constructor</arg>
+						<arg>-Ximmutable</arg>
+						<arg>-constructorAccess=default</arg>
 					</args>
 					<plugins>
 						<plugin>
@@ -79,6 +83,11 @@
 							<artifactId>jaxb2-value-constructor</artifactId>
 							<version>${jaxb2-value-constructor.version}</version>
 						</plugin>
+						<plugin>
+                            <groupId>net.codesup.util</groupId>
+                            <artifactId>jaxb2-rich-contract-plugin</artifactId>
+                            <version>1.15.0</version>
+                        </plugin>
 					</plugins>
 					<bindingDirectory>src/main/jaxb</bindingDirectory>
 					<catalog>src/main/jaxb/catalog.xml</catalog>
