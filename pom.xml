@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>org.ow2.authzforce</groupId>
 	<artifactId>authzforce-ce-parent</artifactId>
-	<version>3.3.3</version>
+	<version>3.3.4</version>
 	<packaging>pom</packaging>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
@@ -28,6 +28,8 @@
 		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
 		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
 		<slf4j.version>1.7.6</slf4j.version>
+		<!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
+		<spring.version>3.2.2.RELEASE</spring.version>
 	</properties>
 	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -94,8 +96,19 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
-				<!-- This version must match the version used by 'logback-ext-spring' above. -->
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
+				<exclusions>
+					<exclusion>
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<artifactId>commons-logging</artifactId>
+						<groupId>commons-logging</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
 				<exclusions>
 					<exclusion>
 						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
