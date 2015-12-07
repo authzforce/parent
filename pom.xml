@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -23,13 +26,13 @@
 		<artifactId.prefix>authzforce-ce</artifactId.prefix>
 		<!-- Fix the project URL for all Authzforce project -->
 		<project.url>https://tuleap.ow2.org/projects/authzforce</project.url>
-		<!-- Fix the project groupId for all Authzforce project -->
 		<git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
 		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
 		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
 		<spring.version>3.2.2.RELEASE</spring.version>
+		<cxf.version>3.1.0</cxf.version>
 	</properties>
 	<url>${project.url}</url>
 	<inceptionYear>2012</inceptionYear>
@@ -75,7 +78,7 @@
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring dependencies 
+				<!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring dependencies
 					used by other Authzforce projects. -->
 				<groupId>org.logback-extensions</groupId>
 				<artifactId>logback-ext-spring</artifactId>
@@ -130,27 +133,43 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+			<dependency>
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>javax.ws.rs-api</artifactId>
+				<!-- Version must match version used by cxf-rt-frontend-jaxrs dependency below -->
+				<version>2.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-rs-client</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
 			<!-- /Third party dependencies -->
 			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
-				<version>${project.version}</version>
+				<version>${project.parent.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-atom-model</artifactId>
-				<version>${project.version}</version>
+				<version>${project.parent.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
-				<version>${project.version}</version>
+				<version>${project.parent.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
-				<version>${project.version}</version>
+				<version>${project.parent.version}</version>
 			</dependency>
 			<!-- /Common AuthZForce CE dependencies -->
 		</dependencies>
@@ -171,7 +190,7 @@
 							<projectName>AuthZForce CE</projectName>
 						</properties>
 						<!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-						<header>../license/thales-gpl.txt</header>
+						<header>../license/thales-gpl.header.txt</header>
 						<strictCheck>true</strictCheck>
 					</configuration>
 				</plugin>
