@@ -15,13 +15,6 @@
 		<tag>HEAD</tag>
 		<url>${git.url.base}/parent</url>
 	</scm>
-	<dependencies>
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>${artifactId.prefix}-xacml-model</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -42,7 +35,6 @@
 							<version>${jaxb2-value-constructor.version}</version>
 						</plugin>
 					</plugins>
-					<catalog>src/main/jaxb/catalog.xml</catalog>
 					<bindingDirectory>src/main/jaxb</bindingDirectory>
 					<bindingIncludes>
 						<include>bindings.xjb</include>
