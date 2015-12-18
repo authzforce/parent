@@ -13,7 +13,7 @@
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
 	<properties>
 		<!-- Version of child modules (XML models), must be in sync with last release of this project -->
-		<xml.models.version>3.3.6</xml.models.version>
+		<xml.models.version>3.3.7-SNAPSHOT</xml.models.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Controls maven compiler plugin -source -->
 		<maven.compiler.source>1.7</maven.compiler.source>
