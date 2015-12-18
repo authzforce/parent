@@ -12,8 +12,6 @@
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZforce Community Edition - Super Parent of AuthZForce CE Components</description>
 	<properties>
-		<!-- Version of child modules (XML models), must be in sync with last release of this project -->
-		<xml.models.version>3.3.7-SNAPSHOT</xml.models.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Controls maven compiler plugin -source -->
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -153,22 +151,26 @@
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-xmlns-model</artifactId>
-				<version>${xml.models.version}</version>
+				<!-- Version updated automatically by maven jgitflow:release-start -->
+				<version>3.3.7-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-atom-model</artifactId>
-				<version>${xml.models.version}</version>
+				<!-- Version updated automatically by maven jgitflow:release-start -->
+				<version>3.3.7-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-xacml-model</artifactId>
-				<version>${xml.models.version}</version>
+				<!-- Version updated automatically by maven jgitflow:release-start -->
+				<version>3.3.7-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
-				<version>${xml.models.version}</version>
+				<!-- Version updated automatically by maven jgitflow:release-start -->
+				<version>3.3.7-SNAPSHOT</version>
 			</dependency>
 			<!-- /Common AuthZForce CE dependencies -->
 		</dependencies>
