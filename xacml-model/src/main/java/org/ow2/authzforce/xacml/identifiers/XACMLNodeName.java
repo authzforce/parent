@@ -27,8 +27,9 @@ package org.ow2.authzforce.xacml.identifiers;
  */
 public enum XACMLNodeName
 {
+	
 	/**
-	 * 
+	 * Special name to represent any node
 	 */
 	ANY("Any"),
 
@@ -81,18 +82,56 @@ public enum XACMLNodeName
      * 
      */
 	RESOURCE_CONTENT("ResourceContent"),
+	
+	/**
+	 * 
+	 */
+	TARGET("Target"),
+	
+	/**
+	 * 
+	 */
+	ANY_OF("AnyOf"),
+	
+	/**
+	 * 
+	 */
+	ALL_OF("AllOf"),
+	
+	/**
+	 * 
+	 */
+	MATCH("Match"),
+	
+	/**
+	 * 
+	 */
+	POLICYSET("PolicySet"),
+	
+	/**
+	 * 
+	 */
+	POLICY("Policy"),
+	
 	/**
 	 * 
 	 */
 	POLICY_ID_REFERENCE("PolicyIdReference"),
+	
 	/**
 	 * 
 	 */
 	POLICYSET_ID_REFERENCE("PolicySetIdReference"),
+	
 	/**
 	 * 
 	 */
-	COMBINER_PARAMETERS("CombinerParameters");
+	COMBINER_PARAMETERS("CombinerParameters"),
+	
+	/**
+	 * 
+	 */
+	COMBINER_PARAMETER("CombinerParameter");
 
 	private final String value;
 

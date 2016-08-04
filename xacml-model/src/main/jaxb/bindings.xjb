@@ -5,6 +5,7 @@
 	<!-- If you want to generate interfaces for all schema-derived classes, switch generateValueClass to 'false'. -->
 		<jaxb:globalBindings generateMixedExtensions="true" generateValueClass="true" >
 			<xjc:simple />
+			<jaxb:serializable uid="1"/>
 		</jaxb:globalBindings>
 	</jaxb:bindings>
 </jaxb:bindings>
