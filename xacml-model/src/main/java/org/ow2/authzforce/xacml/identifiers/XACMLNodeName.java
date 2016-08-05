@@ -22,15 +22,142 @@
 package org.ow2.authzforce.xacml.identifiers;
 
 /**
- * XACML Element names, as defined in XACML Core Specification
+ * XACML node names, as defined in XACML Core Specification (declared in the
+ * same order). There may be fewer names than defined in the XACML schema. There
+ * are added progressively as needed.
  * 
  */
-public enum XACMLNodeName
-{
+public enum XACMLNodeName {
+
+	/**
+	 * Special name to represent any node
+	 */
+	ANY("Any"),
+
 	/**
 	 * 
 	 */
-	ANY("Any"),
+	POLICYSET("PolicySet"),
+
+	/**
+	 * 
+	 */
+	TARGET("Target"),
+
+	/**
+	 * 
+	 */
+	ANY_OF("AnyOf"),
+
+	/**
+	 * 
+	 */
+	ALL_OF("AllOf"),
+
+	/**
+	 * 
+	 */
+	MATCH("Match"),
+
+	/**
+	 * 
+	 */
+	POLICYSET_ID_REFERENCE("PolicySetIdReference"),
+
+	/**
+	 * 
+	 */
+	POLICY_ID_REFERENCE("PolicyIdReference"),
+
+	/**
+	 * 
+	 */
+	POLICY("Policy"),
+
+	/**
+	 * 
+	 */
+	COMBINER_PARAMETERS("CombinerParameters"),
+
+	/**
+	 * 
+	 */
+	COMBINER_PARAMETER("CombinerParameter"),
+	
+	/**
+	 * 
+	 */
+	RULE("Rule"),
+	
+	/**
+	 * 
+	 */
+	VARIABLE_DEFINITION("VariableDefinition"),
+	
+	/**
+	 * 
+	 */
+	VARIABLE_REFERENCE("VariableReference"),
+	
+	/**
+	 * 
+	 */
+	CONDITION("Condition"),
+	
+	/**
+	 * 
+	 */
+	APPLY("Apply"),
+	
+	/**
+	 * 
+	 */
+	FUNCTION("Function"),
+	
+	/**
+	 * 
+	 */
+	ATTRIBUTE_DESIGNATOR("AttributeDesignator"),
+	
+	/**
+	 * 
+	 */
+	ATTRIBUTE_SELECTOR("AttributeSelector"),
+	
+	/**
+	 * 
+	 */
+	ATTRIBUTE_VALUE("AttributeValue"),
+	
+	/**
+	 * 
+	 */
+	OBLIGATION("Obligation"),
+	
+	/**
+	 * 
+	 */
+	ADVICE("Advice"),
+	
+	/**
+	 * 
+	 */
+	ATTRIBUTE_ASSIGNMENT("AttributeAssignment"),
+	
+	/**
+	 * 
+	 */
+	OBLIGATION_EXPRESSION("ObligationExpression"),
+	
+	/**
+	 * 
+	 */
+	ADVICE_EXPRESSION("AdviceExpression"),
+	
+	/**
+	 * 
+	 */
+	ATTRIBUTE_ASSIGNMENT_EXPRESSION("AttributeAssignmentExpression"),
 
 	/**
 	 * 
@@ -38,61 +165,49 @@ public enum XACMLNodeName
 	ATTRIBUTES_ELEMENT("Attributes"),
 
 	/**
-     * 
-     */
-	MULTI_REQUESTS("MultiRequests"),
-
-	/**
-     * 
-     */
-	REQUEST_DEFAULTS("RequestDefaults"),
-
-	/**
-     * 
-     */
-	ATTRIBUTE_ELEMENT("Attribute"),
-
-	/**
-     * 
-     */
-	ATTRIBUTES_CATEGORY("Category"),
-
-	/**
-     * 
-     */
-	ATTRIBUTES_ID("id"),
-
-	/**
-     * 
-     */
-	RETURN_POLICY_ID_LIST("ReturnPolicyIdList"),
-
-	/**
-     * 
-     */
-	COMBINED_DECISION("CombinedDecision"),
-
-	/**
-     * 
-     */
+	 * 
+	 */
 	ATTRIBUTES_CONTENT("Content"),
 
 	/**
-     * 
-     */
-	RESOURCE_CONTENT("ResourceContent"),
+	 * 
+	 */
+	ATTRIBUTE_ELEMENT("Attribute"),
+
 	/**
 	 * 
 	 */
-	POLICY_ID_REFERENCE("PolicyIdReference"),
+	MULTI_REQUESTS("MultiRequests"),
+
 	/**
 	 * 
 	 */
-	POLICYSET_ID_REFERENCE("PolicySetIdReference"),
+	REQUEST_DEFAULTS("RequestDefaults"),
+
 	/**
 	 * 
 	 */
-	COMBINER_PARAMETERS("CombinerParameters");
+	ATTRIBUTES_CATEGORY("Category"),
+
+	/**
+	 * 
+	 */
+	ATTRIBUTES_ID("id"),
+
+	/**
+	 * 
+	 */
+	RETURN_POLICY_ID_LIST("ReturnPolicyIdList"),
+
+	/**
+	 * 
+	 */
+	COMBINED_DECISION("CombinedDecision"),
+
+	/**
+	 * 
+	 */
+	RESOURCE_CONTENT("ResourceContent");
 
 	private final String value;
 
@@ -101,13 +216,11 @@ public enum XACMLNodeName
 	 * 
 	 * @return datatype URI
 	 */
-	public String value()
-	{
+	public String value() {
 		return value;
 	}
 
-	private XACMLNodeName(String v)
-	{
+	private XACMLNodeName(String v) {
 		value = v;
 	}
 
@@ -117,12 +230,9 @@ public enum XACMLNodeName
 	 * @param v
 	 * @return enum constant
 	 */
-	public static XACMLNodeName fromValue(String v)
-	{
-		for (XACMLNodeName c : XACMLNodeName.values())
-		{
-			if (c.value.equals(v))
-			{
+	public static XACMLNodeName fromValue(String v) {
+		for (XACMLNodeName c : XACMLNodeName.values()) {
+			if (c.value.equals(v)) {
 				return c;
 			}
 		}
