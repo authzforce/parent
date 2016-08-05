@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -27,7 +28,8 @@
 		<jaxb2-basics.version>0.9.5</jaxb2-basics.version>
 		<jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
 		<slf4j.version>1.7.6</slf4j.version>
-		<!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
+		<!-- This version must match the Spring version used by 'logback-ext-spring' 
+			in dependencyManagement. -->
 		<spring.version>3.2.2.RELEASE</spring.version>
 		<cxf.version>3.1.0</cxf.version>
 	</properties>
@@ -55,7 +57,8 @@
 	</scm>
 	<!-- distributionManagement defined in oss-parent POM already -->
 	<modules>
-		<!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+		<!-- Only common modules here, i.e. (in)direct dependencies of all other 
+			AuthZForce CE projects -->
 		<module>xmlns-model</module>
 		<module>atom-model</module>
 		<module>xacml-model</module>
@@ -77,17 +80,22 @@
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
-				<!-- This version must use the same version of slfj-api used by 'logback-classic' above. -->
+				<!-- This version must use the same version of slfj-api used by 'logback-classic' 
+					above. -->
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>log4j-over-slf4j</artifactId>
+				<!-- This version must use the same version of slfj-api used by 'logback-classic' 
+					above. -->
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring dependencies
-					used by other Authzforce projects. -->
+				<!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by 
+					authzforce webapp for configuring logback with Spring. Declared here to make 
+					sure version matches with other logback/spring dependencies used by other 
+					Authzforce projects. -->
 				<groupId>org.logback-extensions</groupId>
 				<artifactId>logback-ext-spring</artifactId>
 				<version>0.1.4</version>
@@ -95,7 +103,8 @@
 			<dependency>
 				<groupId>ch.qos.logback</groupId>
 				<artifactId>logback-classic</artifactId>
-				<!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
+				<!-- This version must match the version used by the one of 'logback-ext-spring' 
+					above. -->
 				<version>1.1.1</version>
 			</dependency>
 			<dependency>
@@ -104,7 +113,8 @@
 				<version>${spring.version}</version>
 				<exclusions>
 					<exclusion>
-						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to 
+							slf4j, see http://www.slf4j.org/legacy.html -->
 						<artifactId>commons-logging</artifactId>
 						<groupId>commons-logging</groupId>
 					</exclusion>
@@ -116,7 +126,8 @@
 				<version>${spring.version}</version>
 				<exclusions>
 					<exclusion>
-						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to 
+							slf4j, see http://www.slf4j.org/legacy.html -->
 						<artifactId>commons-logging</artifactId>
 						<groupId>commons-logging</groupId>
 					</exclusion>
@@ -125,11 +136,13 @@
 			<dependency>
 				<groupId>org.springframework.ws</groupId>
 				<artifactId>spring-xml</artifactId>
-				<!-- This version must use the same version of spring-context used by 'logback-ext-spring' above. -->
+				<!-- This version must use the same version of spring-context used by 
+					'logback-ext-spring' above. -->
 				<version>2.1.3.RELEASE</version>
 				<exclusions>
 					<exclusion>
-						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+						<!-- Replaced by jcl-over-slf4j dependency for redirecting logs to 
+							slf4j, see http://www.slf4j.org/legacy.html -->
 						<artifactId>commons-logging</artifactId>
 						<groupId>commons-logging</groupId>
 					</exclusion>
@@ -138,7 +151,8 @@
 			<dependency>
 				<groupId>javax.ws.rs</groupId>
 				<artifactId>javax.ws.rs-api</artifactId>
-				<!-- Version must match version used by cxf-rt-frontend-jaxrs dependency below -->
+				<!-- Version must match version used by cxf-rt-frontend-jaxrs dependency 
+					below -->
 				<version>2.0.1</version>
 			</dependency>
 			<dependency>
@@ -150,6 +164,16 @@
 				<groupId>org.apache.cxf</groupId>
 				<artifactId>cxf-rt-frontend-jaxrs</artifactId>
 				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.cxf</groupId>
+				<artifactId>cxf-rt-rs-service-description</artifactId>
+				<version>${cxf.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.0.1</version>
 			</dependency>
 			<!-- /Third party dependencies -->
 			<!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
@@ -184,6 +208,13 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.5</version>
+					<!-- target JDK already set by parent project's maven.compiler.target 
+						property -->
+				</plugin>
+				<plugin>
 					<groupId>com.mycila</groupId>
 					<artifactId>license-maven-plugin</artifactId>
 					<version>2.7</version>
@@ -201,6 +232,19 @@
 					</configuration>
 				</plugin>
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.2</version>
+					<configuration>
+						<!-- Enables analysis which takes more memory but finds more bugs. 
+							If you run out of memory, changes the value of the effort element to 'Low'. -->
+						<effort>Max</effort>
+						<!-- Reports all bugs (other values are medium and max) -->
+						<threshold>Low</threshold>
+						<failOnError>true</failOnError>
+					</configuration>
+				</plugin>
+				<plugin>
 					<groupId>org.jvnet.jaxb2.maven2</groupId>
 					<artifactId>maven-jaxb2-plugin</artifactId>
 					<version>0.13.0</version>
@@ -209,6 +253,17 @@
 						<strict>false</strict>
 						<verbose>false</verbose>
 						<removeOldOutput>true</removeOldOutput>
+					</configuration>
+				</plugin>
+				<plugin>
+					<!-- For generating HTML documentation from Markdown -->
+					<groupId>com.ruleoftech</groupId>
+					<artifactId>markdown-page-generator-plugin</artifactId>
+					<version>0.10</version>
+					<configuration>
+						<inputEncoding>UTF-8</inputEncoding>
+						<outputEncoding>UTF-8</outputEncoding>
+						<pegdownExtensions>SMARTS,QUOTES,ANCHORLINKS,FENCED_CODE_BLOCKS,AUTOLINKS</pegdownExtensions>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -271,12 +326,14 @@
 					<configuration>
 						<serverId>ossrh</serverId>
 						<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-						<!-- For safety reasons, the actual release should be a manual step (through Sonatype's Nexus GUI) to allow for final check. -->
+						<!-- For safety reasons, the actual release should be a manual step 
+							(through Sonatype's Nexus GUI) to allow for final check. -->
 						<autoReleaseAfterClose>false</autoReleaseAfterClose>
 					</configuration>
 				</plugin>
 				<plugin>
-					<!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
+					<!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ 
+						Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
 					<groupId>external.atlassian.jgitflow</groupId>
 					<artifactId>jgitflow-maven-plugin</artifactId>
 					<version>1.0-m5.1</version>
@@ -286,7 +343,8 @@
 						</flowInitContext>
 						<pushReleases>true</pushReleases>
 						<useReleaseProfile>false</useReleaseProfile>
-						<!--For releases, use the release profile defined in Sonatype's parent POM instead of default release profile defined in Maven super POM. -->
+						<!--For releases, use the release profile defined in Sonatype's parent 
+							POM instead of default release profile defined in Maven super POM. -->
 						<arguments>-Psonatype-oss-release</arguments>
 						<noDeploy>false</noDeploy>
 					</configuration>
@@ -296,7 +354,8 @@
 	</build>
 	<profiles>
 		<profile>
-			<!-- RELEASE PROFILE. Override oss-parent release profile to add nexus-staging-maven-plugin. To perform a release, run: $ mvn jgitflow:release-finish -->
+			<!-- RELEASE PROFILE. Override oss-parent release profile to add nexus-staging-maven-plugin. 
+				To perform a release, run: $ mvn jgitflow:release-finish -->
 			<id>sonatype-oss-release</id>
 			<build>
 				<plugins>
