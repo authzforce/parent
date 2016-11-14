@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.ow2.authzforce</groupId>
 		<artifactId>authzforce-ce-parent</artifactId>
-		<version>3.4.1-SNAPSHOT</version>
+		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>authzforce-ce-xacml-model</artifactId>
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -65,8 +65,8 @@
 					<strict>false</strict>
 					<useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
 					<args>
-						<arg>-Xequals</arg>
-						<arg>-XhashCode</arg>
+						<arg>-XsimpleEquals</arg>
+						<arg>-XsimpleHashCode</arg>
 						<arg>-XtoString</arg>
 						<arg>-Xvalue-constructor</arg>
 						<arg>-Ximmutable</arg>
