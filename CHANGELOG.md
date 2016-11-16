@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
-## Unreleased
+## 4.0.0
 ### Added
 - Maven pluginManagement: maven-jar-plugin 3.0.2
 - Maven dependencyManagement: xml-resolver 1.2, Saxon-HE 9.7.0-11, guava 20.0
