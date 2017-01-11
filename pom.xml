@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>4.0.0</version>
+   <version>4.1.0</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthZforce - Super Parent of all AuthZForce components</description>
@@ -23,8 +23,8 @@
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.6</slf4j.version>
       <!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
-      <spring.version>4.3.4.RELEASE</spring.version>
-      <cxf.version>3.1.8</cxf.version>
+      <spring.version>4.3.5.RELEASE</spring.version>
+      <cxf.version>3.1.9</cxf.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -153,7 +153,7 @@
          <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.7.0-11</version>
+            <version>9.7.0-14</version>
          </dependency>
          <dependency>
             <groupId>com.google.guava</groupId>
@@ -166,25 +166,25 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.0.0</version>
+            <version>4.1.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.0.0</version>
+            <version>4.1.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.0.0</version>
+            <version>4.1.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.0.0</version>
+            <version>4.1.0</version>
          </dependency>
          <!-- /Common AuthZForce CE dependencies -->
       </dependencies>
@@ -225,6 +225,13 @@
                   <!-- Reports all bugs (other values are medium and max) -->
                   <threshold>Low</threshold>
                   <failOnError>true</failOnError>
+                  <plugins>
+                     <plugin>
+                        <groupId>com.h3xstream.findsecbugs</groupId>
+                        <artifactId>findsecbugs-plugin</artifactId>
+                        <version>LATEST</version> <!-- Auto-update to the latest stable -->
+                     </plugin>
+                  </plugins>
                </configuration>
             </plugin>
             <plugin>
@@ -261,7 +268,6 @@
                <version>2.3.2</version>
             </plugin>
             <plugin>
-               <!-- Using same description as in oss-parent POM -->
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-source-plugin</artifactId>
                <version>3.0.1</version>
@@ -275,7 +281,6 @@
                </executions>
             </plugin>
             <plugin>
-               <!-- Using same description as in oss-parent POM -->
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-javadoc-plugin</artifactId>
                <version>2.10.4</version>
@@ -298,7 +303,6 @@
                <version>2.19.1</version>
             </plugin>
             <plugin>
-               <!-- Using same description as in oss-parent POM -->
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-gpg-plugin</artifactId>
                <version>1.6</version>
@@ -335,7 +339,6 @@
                   </flowInitContext>
                   <pushReleases>true</pushReleases>
                   <useReleaseProfile>false</useReleaseProfile>
-                  <!--For releases, use the release profile defined in Sonatype's parent POM instead of default release profile defined in Maven super POM. -->
                   <arguments>-Psonatype-oss-release</arguments>
                   <noDeploy>false</noDeploy>
                </configuration>
@@ -345,7 +348,7 @@
    </build>
    <profiles>
       <profile>
-         <!-- RELEASE PROFILE. Override oss-parent release profile to add nexus-staging-maven-plugin. To perform a release, run: $ mvn jgitflow:release-finish -->
+         <!-- RELEASE PROFILE. To perform a release, run: $ mvn jgitflow:release-finish -->
          <id>sonatype-oss-release</id>
          <build>
             <plugins>
