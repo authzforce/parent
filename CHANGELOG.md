@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file following the [K
 
 ## 4.1.0
 ### Changed
-- Upgraded managed dependency versions: Spring 4.3.4 -> 4.3.5, CXF 3.1.8 -> 3.1.9, Saxon-HE 9.7.0-11 -> 9.1.0-14
+- Upgraded managed dependency versions: Spring 4.3.4 -> 4.3.5, CXF 3.1.8 -> 3.1.9, Saxon-HE 9.7.0-11 -> 9.7.0-14
 - Findbugs plugin configuration: added finsecbugs-plugin 
 
 
