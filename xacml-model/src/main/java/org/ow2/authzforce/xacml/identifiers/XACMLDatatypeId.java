@@ -96,14 +96,12 @@ public enum XACMLDatatypeId
 	XPATH_EXPRESSION("urn:oasis:names:tc:xacml:3.0:data-type:xpathExpression");
 
 	/**
-	 * Prefix of URI of XML schema built-in datatypes (used in XACML), up to the '#' included:
-	 * {@value #XML_SCHEMA_URI_PREFIX}
+	 * Prefix of URI of XML schema built-in datatypes (used in XACML), up to the '#' included: {@value #XML_SCHEMA_URI_PREFIX}
 	 */
 	public static final String XML_SCHEMA_URI_PREFIX = "http://www.w3.org/2001/XMLSchema#";
 
 	/**
-	 * Length of {@link #XML_SCHEMA_URI_PREFIX}, used for extracting suffix from datatypes in order
-	 * to create XACML function names, logging types of data, etc.
+	 * Length of {@link #XML_SCHEMA_URI_PREFIX}, used for extracting suffix from datatypes in order to create XACML function names, logging types of data, etc.
 	 */
 	public static final int XML_SCHEMA_URI_PREFIX_LENGTH = XACMLDatatypeId.XML_SCHEMA_URI_PREFIX.length();
 
@@ -119,26 +117,28 @@ public enum XACMLDatatypeId
 		return value;
 	}
 
-	private XACMLDatatypeId(String v)
+	private XACMLDatatypeId(final String v)
 	{
 		value = v;
 	}
 
 	/**
 	 * Get datatype enum constant from datatype URI
-	 * @param v
+	 * 
+	 * @param datatypeURI
+	 *            datatype idenfifier (URI)
 	 * @return Datatype enum
 	 */
-	public static XACMLDatatypeId fromValue(String v)
+	public static XACMLDatatypeId fromValue(final String datatypeURI)
 	{
-		for (XACMLDatatypeId c : XACMLDatatypeId.values())
+		for (final XACMLDatatypeId c : XACMLDatatypeId.values())
 		{
-			if (c.value.equals(v))
+			if (c.value.equals(datatypeURI))
 			{
 				return c;
 			}
 		}
-		throw new IllegalArgumentException(v);
+		throw new IllegalArgumentException(datatypeURI);
 	}
 
 }
