@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>4.1.1</version>
+   <version>5.0.0</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthZforce - Super Parent of all AuthZForce components</description>
@@ -21,10 +21,10 @@
       <git.url.base>https://tuleap.ow2.org/plugins/git/authzforce</git.url.base>
       <jaxb2-basics.version>0.11.1</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
-      <slf4j.version>1.7.6</slf4j.version>
+      <slf4j.version>1.7.22</slf4j.version>
       <!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
-      <spring.version>4.3.5.RELEASE</spring.version>
-      <cxf.version>3.1.9</cxf.version>
+      <spring.version>4.3.6.RELEASE</spring.version>
+      <cxf.version>3.1.10</cxf.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -98,7 +98,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
-            <version>1.1.1</version>
+            <version>1.1.9</version>
          </dependency>
          <dependency>
             <groupId>org.springframework</groupId>
@@ -158,7 +158,7 @@
          <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>20.0</version>
+            <version>21.0</version>
          </dependency>
          <!-- /Third party dependencies -->
          <!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
@@ -166,25 +166,25 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.1.1</version>
+            <version>5.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.1.1</version>
+            <version>5.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.1.1</version>
+            <version>5.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>4.1.1</version>
+            <version>5.0.0</version>
          </dependency>
          <!-- /Common AuthZForce CE dependencies -->
       </dependencies>

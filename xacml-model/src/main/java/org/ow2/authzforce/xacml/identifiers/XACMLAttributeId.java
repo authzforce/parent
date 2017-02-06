@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012-2016 Thales Services SAS.
+ * Copyright (C) 2012-2017 Thales Services SAS.
  *
  * This file is part of AuthZForce CE.
  *
@@ -22,140 +22,148 @@ package org.ow2.authzforce.xacml.identifiers;
  * XACML standard attribute identifiers
  *
  */
-public enum XACMLAttributeId {
+public enum XACMLAttributeId
+{
 
 	/*
 	 * Subject
 	 */
 	/**
-	 * 
+	 * XACML 3.0, §10.2.6
 	 */
-	XACML_SUBJECT_DNS_NAME("urn:oasis:names:tc:xacml:1.0:subject:authn-locality:dns-name"), 
+	XACML_1_0_SUBJECT_DNS_NAME("urn:oasis:names:tc:xacml:1.0:subject:authn-locality:dns-name"),
 
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_IP_ADDRESS("urn:oasis:names:tc:xacml:1.0:subject:authn-locality:ip-address"), 
+	XACML_1_0_SUBJECT_IP_ADDRESS("urn:oasis:names:tc:xacml:1.0:subject:authn-locality:ip-address"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_AUTHENTICATION_METHOD("urn:oasis:names:tc:xacml:1.0:subject:authentication-method"), 
+	XACML_1_0_SUBJECT_AUTHENTICATION_METHOD("urn:oasis:names:tc:xacml:1.0:subject:authentication-method"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_AUTHENTICATION_TIME("urn:oasis:names:tc:xacml:1.0:subject:authentication-time"), 
+	XACML_1_0_SUBJECT_AUTHENTICATION_TIME("urn:oasis:names:tc:xacml:1.0:subject:authentication-time"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_KEY_INFO("urn:oasis:names:tc:xacml:1.0:subject:key-info"), 
+	XACML_1_0_SUBJECT_KEY_INFO("urn:oasis:names:tc:xacml:1.0:subject:key-info"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_REQUEST_TIME("urn:oasis:names:tc:xacml:1.0:subject:request-time"), 
+	XACML_1_0_SUBJECT_REQUEST_TIME("urn:oasis:names:tc:xacml:1.0:subject:request-time"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_SESSION_START_TIME("urn:oasis:names:tc:xacml:1.0:subject:session-start-time"), 
+	XACML_1_0_SUBJECT_SESSION_START_TIME("urn:oasis:names:tc:xacml:1.0:subject:session-start-time"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_SUBJECT_ID("urn:oasis:names:tc:xacml:1.0:subject:subject-id"), 
+	XACML_1_0_SUBJECT_ID("urn:oasis:names:tc:xacml:1.0:subject:subject-id"),
 	/**
 	 * 
 	 */
-	XACML_SUBJECT_SUBJECT_ID_QUALIFIER("urn:oasis:names:tc:xacml:1.0:subject:subject-id-qualifier"), 
+	XACML_1_0_SUBJECT_ID_QUALIFIER("urn:oasis:names:tc:xacml:1.0:subject:subject-id-qualifier"),
+
 	/**
-	 * 
+	 * XACML 3.0 RBAC Profile, §6.2
 	 */
-	XACML_SUBJECT_SUBJECT_ID_ROLE("urn:oasis:names:tc:xacml:1.0:subject:subject-id-role"),
+	XACML_2_0_SUBJECT_ROLE("urn:oasis:names:tc:xacml:2.0:subject:role"),
 
 	/*
 	 * Resource
 	 */
 	/**
-	 * 
+	 * XACML 3.0, §10.2.6
 	 */
-	XACML_RESOURCE_RESOURCE_ID("urn:oasis:names:tc:xacml:1.0:resource:resource-id"), 
+	XACML_1_0_RESOURCE_ID("urn:oasis:names:tc:xacml:1.0:resource:resource-id"),
 	/**
 	 * 
 	 */
-	XACML_RESOURCE_RESOURCE_LOCATION("urn:oasis:names:tc:xacml:1.0:resource:resource-location"),
+	XACML_1_0_RESOURCE_LOCATION("urn:oasis:names:tc:xacml:1.0:resource:resource-location"),
 	/**
-     * The standard URI for the resource's scope in XACML v3.0 (resp. v2.0) multiple decision (resp. resource) profile.
-     * @see XACMLResourceScope possible scopes
-     */
-    XACML_RESOURCE_SCOPE("urn:oasis:names:tc:xacml:2.0:resource:scope"),
+	 * The standard URI for the resource's scope in XACML v3.0 (resp. v2.0) multiple decision (resp. resource) profile.
+	 * 
+	 * @see XACMLResourceScope possible scopes
+	 */
+	XACML_2_0_RESOURCE_SCOPE("urn:oasis:names:tc:xacml:2.0:resource:scope"),
 	/**
 	 * 
 	 */
-	XACML_RESOURCE_SIMPLE_FILE_NAME("urn:oasis:names:tc:xacml:1.0:resource:simple-file-name"),
+	XACML_1_0_RESOURCE_SIMPLE_FILE_NAME("urn:oasis:names:tc:xacml:1.0:resource:simple-file-name"),
+
+	/**
+	 * XACML v3.0 Multiple Decision Profile Version 1.0
+	 */
+	XACML_3_0_PROFILE_MULTIPLE_CONTENT_SELECTOR("urn:oasis:names:tc:xacml:3.0:profile:multiple:content-selector"),
 
 	/*
 	 * Action
+	 * 
+	 * XACML 3.0, §10.2.6
 	 */
 	/**
 	 * urn:oasis:names:tc:xacml:1.0:action:action-id
 	 */
-	XACML_ACTION_ACTION_ID("urn:oasis:names:tc:xacml:1.0:action:action-id"), 
-	
+	XACML_1_0_ACTION_ID("urn:oasis:names:tc:xacml:1.0:action:action-id"),
+
 	/**
 	 * 
 	 */
-	XACML_ACTION_IMPLIED_ACTION("urn:oasis:names:tc:xacml:1.0:action:implied-action"),
-			
+	XACML_1_0_ACTION_IMPLIED_ACTION("urn:oasis:names:tc:xacml:1.0:action:implied-action"),
+
 	/*
 	 * Environment
 	 */
 	/**
-	 * 
+	 * XACML 3.0, §10.2.5
 	 */
 	XACML_1_0_ENVIRONMENT_CURRENT_TIME("urn:oasis:names:tc:xacml:1.0:environment:current-time"),
-	
+
 	/**
 	 * 
 	 */
 	XACML_1_0_ENVIRONMENT_CURRENT_DATE("urn:oasis:names:tc:xacml:1.0:environment:current-date"),
-	
+
 	/**
 	 * 
 	 */
-	XACML_1_0_ENVIRONMENT_CURRENT_DATETIME("urn:oasis:names:tc:xacml:1.0:environment:current-dateTime"),
-
-    /**
-     * XACML v3.0 Multiple Decision Profile Version 1.0
-     */
-    MULTIPLE_CONTENT_SELECTOR("urn:oasis:names:tc:xacml:3.0:profile:multiple:content-selector"),
-
-    /**
-     * XACML v3.0 Hierarchical Resource Profile Version 1.0, XACML v3.0 Multiple Decision Profile Version 1.0
-     */
-    CONTENT_SELECTOR("urn:oasis:names:tc:xacml:3.0:content-selector");
+	XACML_1_0_ENVIRONMENT_CURRENT_DATETIME("urn:oasis:names:tc:xacml:1.0:environment:current-dateTime");
 
 	private final String value;
 
-	XACMLAttributeId(String v) {
+	XACMLAttributeId(final String v)
+	{
 		value = v;
 	}
 
 	/**
 	 * Get attribute ID (URI)
+	 * 
 	 * @return attribute ID
 	 */
-	public String value() {
+	public String value()
+	{
 		return value;
 	}
 
 	/**
 	 * Get enum constant for a given standard attribute ID
-	 * @param v
+	 * 
+	 * @param identifier
+	 *            attribute identifier
 	 * @return enum constant for this attribute ID
 	 */
-	public static XACMLAttributeId fromValue(String v) {
-		for (XACMLAttributeId c : XACMLAttributeId.values()) {
-			if (c.value.equals(v)) {
+	public static XACMLAttributeId fromValue(final String identifier)
+	{
+		for (final XACMLAttributeId c : XACMLAttributeId.values())
+		{
+			if (c.value.equals(identifier))
+			{
 				return c;
 			}
 		}
-		throw new IllegalArgumentException(v);
+		throw new IllegalArgumentException(identifier);
 	}
 }

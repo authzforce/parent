@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2012-2016 Thales Services SAS.
+ * Copyright (C) 2012-2017 Thales Services SAS.
  *
  * This file is part of AuthZForce CE.
  *
@@ -39,8 +39,7 @@ public enum XACMLResourceScope
 	CHILDREN("Children"),
 
 	/**
-	 * Resource scope of Descendants (the given resource and all descendants at any depth or
-	 * distance)
+	 * Resource scope of Descendants (the given resource and all descendants at any depth or distance)
 	 */
 	DESCENDANTS("Descendants");
 
@@ -56,7 +55,7 @@ public enum XACMLResourceScope
 		return value;
 	}
 
-	private XACMLResourceScope(String v)
+	private XACMLResourceScope(final String v)
 	{
 		value = v;
 	}
@@ -64,18 +63,19 @@ public enum XACMLResourceScope
 	/**
 	 * Get resource scope constant from value
 	 * 
-	 * @param v
+	 * @param scopeId
+	 *            resource scope identifier
 	 * @return Resource scope enum
 	 */
-	public static XACMLResourceScope fromValue(String v)
+	public static XACMLResourceScope fromValue(final String scopeId)
 	{
-		for (XACMLResourceScope c : XACMLResourceScope.values())
+		for (final XACMLResourceScope c : XACMLResourceScope.values())
 		{
-			if (c.value.equals(v))
+			if (c.value.equals(scopeId))
 			{
 				return c;
 			}
 		}
-		throw new IllegalArgumentException(v);
+		throw new IllegalArgumentException(scopeId);
 	}
 }

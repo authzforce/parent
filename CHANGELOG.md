@@ -2,6 +2,18 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 5.0.0
+### Changed
+- Renamed enum XACMLCategory to XACMLAttributeCategory and simplified its constants
+- Renamed/simplified XACMLAttributeId enum constants
+- Managed dependency versions:
+	SLF4J: 1.7.6 -> 1.7.22
+	CXF: 3.1.9 -> 3.1.10
+	Spring: 4.3.5 -> 4.3.6
+	Logback-classic: 1.1.1 -> 1.1.9
+	Guava: 20.0 -> 21.0
+
+
 ## 4.1.1
 ### Fixed
 - Upgraded OWASP dependency-check maven plugin: 1.4.4 -> 1.4.4.1 => fix issue with multi-module projects (#617 on GitHub)
