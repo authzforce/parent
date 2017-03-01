@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## Unreleased
+### Changed
+- Project URL: https://tuleap.ow2.org/projects/authzforce -> https://authzforce.ow2.org
+- GIT repository URL base: https://tuleap.ow2.org/plugins/git/authzforce -> https://gitlab.ow2.org/authzforce
+
+
 ## 5.0.0
 ### Changed
 - Renamed enum XACMLCategory to XACMLAttributeCategory and simplified its constants
