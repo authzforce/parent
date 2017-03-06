@@ -30,8 +30,8 @@
    <inceptionYear>2012</inceptionYear>
    <licenses>
       <license>
-         <name>GNU General Public License</name>
-         <url>http://www.gnu.org/licenses/gpl.txt</url>
+         <name>Apache License Version 2.0</name>
+         <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
       </license>
    </licenses>
    <developers>
@@ -202,10 +202,10 @@
                      <inceptionYear>${project.inceptionYear}</inceptionYear>
                      <currentYear>${currentYear}</currentYear>
                      <copyrightOwner>Thales Services SAS</copyrightOwner>
-                     <projectName>AuthZForce CE</projectName>
+                     <projectName>AuthzForce CE</projectName>
                   </properties>
                   <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-                  <header>../license/thales-gpl.header.txt</header>
+                  <header>../license/alv2-header.txt</header>
                   <strictCheck>true</strictCheck>
                </configuration>
             </plugin>
