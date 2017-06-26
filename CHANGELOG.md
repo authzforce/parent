@@ -2,6 +2,11 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 6.0.0
+### Removed
+- Removed timeToLiveSec, timeToIdleSec and memoryStoreEvictionPolicy attributes from the XML schema definition of PDP Decision cache (AbstractDecisionCache type), because we learnt that mainstream decision cache implementations do not support all these, e.g. Guava cache as of v20.0 does not support other memoryStoreEvictionPolicy than LRU. It is now up to DecisionCache implementations to add these attributes in their configuration schema if necessary.
+
+
 ## 5.1.0
 ### Changed
 - License: GPL v3.0 replaced by Apache License v2.0

@@ -50,31 +50,6 @@
 			<xs:extension base="tns:AbstractPdpExtension" />
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:simpleType name="CacheMemoryStoreEvictionPolicy">
-		<xs:annotation>
-			<xs:documentation>
-				Policy to be enforced when reaching the maximum allowed number of cached
-				elements in memory.
-			</xs:documentation>
-		</xs:annotation>
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="LRU">
-				<xs:annotation>
-					<xs:documentation>Least Recently Used</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="FIFO">
-				<xs:annotation>
-					<xs:documentation>First In First Out</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-			<xs:enumeration value="LFU">
-				<xs:annotation>
-					<xs:documentation>Less Frequently Used</xs:documentation>
-				</xs:annotation>
-			</xs:enumeration>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:complexType abstract="true" name="AbstractDecisionCache">
 		<xs:annotation>
 			<xs:documentation>
@@ -86,47 +61,10 @@
 		</xs:annotation>
 		<xs:complexContent>
 			<xs:extension base="tns:AbstractPdpExtension">
-				<xs:attribute name="timeToLiveSec" use="required">
-					<xs:annotation>
-						<xs:documentation>The maximum number of seconds an element can exist in the cache regardless
-							of use. The element expires at this limit and will no longer be returned from the cache. The
-							default
-							value is 0, which means no timeToLive (TTL) eviction takes place (infinite lifetime).
-						</xs:documentation>
-					</xs:annotation>
-					<xs:simpleType>
-						<xs:restriction base="xs:nonNegativeInteger">
-							<xs:maxInclusive value="1800" />
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:attribute>
-				<xs:attribute name="timeToIdleSec" use="required">
-					<xs:annotation>
-						<xs:documentation>The maximum number of seconds an element can exist in the cache without
-							being accessed. The element expires at this limit and will no longer be returned from the
-							cache. The
-							default value is 0, which means no timeToIdle (TTI) eviction takes place (infinite
-							lifetime).
-						</xs:documentation>
-					</xs:annotation>
-					<xs:simpleType>
-						<xs:restriction base="xs:nonNegativeInteger">
-							<xs:maxInclusive value="1800" />
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:attribute>
 				<xs:attribute default="100" name="maxElementsInMemory" type="xs:nonNegativeInteger" use="optional">
 					<xs:annotation>
 						<xs:documentation>the maximum number of elements in memory, before they are evicted. Value
 							zero means unlimited.
-						</xs:documentation>
-					</xs:annotation>
-				</xs:attribute>
-				<xs:attribute default="LRU" name="memoryStoreEvictionPolicy" type="tns:CacheMemoryStoreEvictionPolicy" use="optional">
-					<xs:annotation>
-						<xs:documentation>
-							Policy that will be enforced upon reaching the maxElementsInMemory limit.
-							Default policy is LRU.
 						</xs:documentation>
 					</xs:annotation>
 				</xs:attribute>
