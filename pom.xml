@@ -205,7 +205,7 @@
                      <projectName>AuthzForce CE</projectName>
                   </properties>
                   <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-                  <header>../license/alv2-header.txt</header>
+                  <header>license/alv2-header.txt</header>
                   <strictCheck>true</strictCheck>
                </configuration>
             </plugin>
