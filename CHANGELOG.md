@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
-## Unreleased
+## 6.0.1
 ## Fixed
 - Path to license header file for license plugin
 
