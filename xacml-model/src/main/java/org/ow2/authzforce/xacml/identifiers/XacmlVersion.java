@@ -22,11 +22,11 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XACMLVersion#ordinal()} and match
+ * XACML Version. The actual version IDs are returned by {@link XacmlVersion#ordinal()} and match
  * the XACML version integers defined in SunXACML PolicyMetadata class.
  * 
  */
-public enum XACMLVersion
+public enum XacmlVersion
 {
 	/**
 	 * XACML 1.0
@@ -51,7 +51,7 @@ public enum XACMLVersion
 
 	private final String namespace;
 
-	XACMLVersion(String ns)
+	XacmlVersion(String ns)
 	{
 		namespace = ns;
 	}
@@ -69,9 +69,9 @@ public enum XACMLVersion
 	 *            schema namespace of this XACML version.
 	 * @return XACML Version enum
 	 */
-	public static XACMLVersion fromValue(String v)
+	public static XacmlVersion fromValue(String v)
 	{
-		for (XACMLVersion c : XACMLVersion.values())
+		for (XacmlVersion c : XacmlVersion.values())
 		{
 			if (c.namespace.equals(v))
 			{

@@ -21,7 +21,7 @@ package org.ow2.authzforce.xacml.identifiers;
  * XPATH Version.
  * 
  */
-public enum XPATHVersion
+public enum XPathVersion
 {
 	/**
 	 * 1.0
@@ -36,7 +36,7 @@ public enum XPATHVersion
 	private final String uri;
 	private final String versionNumber;
 
-	XPATHVersion(String uri, String versionNumber)
+	XPathVersion(String uri, String versionNumber)
 	{
 		this.uri = uri;
 		this.versionNumber = versionNumber;
@@ -67,9 +67,9 @@ public enum XPATHVersion
 	 * @throws IllegalArgumentException
 	 *             if uri does not match any XPath version
 	 */
-	public static XPATHVersion fromURI(String uri) throws IllegalArgumentException
+	public static XPathVersion fromURI(String uri) throws IllegalArgumentException
 	{
-		for (XPATHVersion c : XPATHVersion.values())
+		for (XPathVersion c : XPathVersion.values())
 		{
 			if (c.uri.equals(uri))
 			{

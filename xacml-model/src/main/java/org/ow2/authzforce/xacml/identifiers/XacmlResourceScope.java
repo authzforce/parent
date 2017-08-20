@@ -21,10 +21,10 @@
 package org.ow2.authzforce.xacml.identifiers;
 
 /**
- * XACML Resource scopes, as defined in XACML v2.0 Multiple Resource Profile, §5. The actual value
+ * XACML Resource scopes, as defined in XACML v3.0 Multiple Decision Profile Version 1.0, §6.1. The actual value
  * 
  */
-public enum XACMLResourceScope
+public enum XacmlResourceScope
 {
 
 	/**
@@ -54,7 +54,7 @@ public enum XACMLResourceScope
 		return value;
 	}
 
-	private XACMLResourceScope(final String v)
+	private XacmlResourceScope(final String v)
 	{
 		value = v;
 	}
@@ -66,9 +66,9 @@ public enum XACMLResourceScope
 	 *            resource scope identifier
 	 * @return Resource scope enum
 	 */
-	public static XACMLResourceScope fromValue(final String scopeId)
+	public static XacmlResourceScope fromValue(final String scopeId)
 	{
-		for (final XACMLResourceScope c : XACMLResourceScope.values())
+		for (final XacmlResourceScope c : XacmlResourceScope.values())
 		{
 			if (c.value.equals(scopeId))
 			{

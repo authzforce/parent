@@ -21,7 +21,7 @@ package org.ow2.authzforce.xacml.identifiers;
  * XACML standard attribute identifiers
  *
  */
-public enum XACMLAttributeId
+public enum XacmlAttributeId
 {
 
 	/*
@@ -132,7 +132,7 @@ public enum XACMLAttributeId
 
 	private final String value;
 
-	XACMLAttributeId(final String v)
+	XacmlAttributeId(final String v)
 	{
 		value = v;
 	}
@@ -154,9 +154,9 @@ public enum XACMLAttributeId
 	 *            attribute identifier
 	 * @return enum constant for this attribute ID
 	 */
-	public static XACMLAttributeId fromValue(final String identifier)
+	public static XacmlAttributeId fromValue(final String identifier)
 	{
-		for (final XACMLAttributeId c : XACMLAttributeId.values())
+		for (final XacmlAttributeId c : XacmlAttributeId.values())
 		{
 			if (c.value.equals(identifier))
 			{

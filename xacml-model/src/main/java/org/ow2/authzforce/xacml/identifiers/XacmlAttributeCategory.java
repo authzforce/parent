@@ -22,10 +22,10 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XACMLAttributeCategory#ordinal()} and match the XACML version integers defined in SunXACML PolicyMetadata class.
+ * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and match the XACML version integers defined in SunXACML PolicyMetadata class.
  * 
  */
-public enum XACMLAttributeCategory
+public enum XacmlAttributeCategory
 {
 	/**
 	 * Subject Category
@@ -73,7 +73,7 @@ public enum XACMLAttributeCategory
 
 	private final String value;
 
-	XACMLAttributeCategory(String v) {
+	XacmlAttributeCategory(String v) {
 		value = v;
 	}
 
@@ -88,8 +88,8 @@ public enum XACMLAttributeCategory
 	 * @param v XACML identifier for this category
 	 * @return XACMLCategory
 	 */
-	public static XACMLAttributeCategory fromValue(String v) {
-		for (XACMLAttributeCategory c : XACMLAttributeCategory.values()) {
+	public static XacmlAttributeCategory fromValue(String v) {
+		for (XacmlAttributeCategory c : XacmlAttributeCategory.values()) {
 			if (c.value.equals(v)) {
 				return c;
 			}

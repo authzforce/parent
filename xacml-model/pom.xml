@@ -7,7 +7,7 @@
 	</parent>
 	<artifactId>authzforce-ce-xacml-model</artifactId>
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>AuthZForce - Java model (JAXB) for OASIS XACML Core Specification. The first two (dot-separated) sequences of the artifact version refer to the version of the OASIS XACML standard from which model (XML schema) this artifact is generated (using JAXB framework). OASIS XACML schema file is included. This project also includes standard XACML identifiers as Java enums.</description>
+	<description>AuthzForce - Java model (JAXB) for OASIS XACML Core Specification. This project also includes the OASIS XACML schema, standard XACML identifiers as Java enums, and JAXB-related utilities.</description>
 	<url>${project.url}</url>
 	<scm>
 		<connection>scm:git:${git.url.base}/parent.git</connection>
