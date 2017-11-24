@@ -24,7 +24,7 @@ package org.ow2.authzforce.xacml.identifiers;
  * XACML node names, as defined in XACML Core Specification (declared in the same order). There may be fewer names than defined in the XACML schema. There are added progressively as needed.
  * 
  */
-public enum XACMLNodeName
+public enum XacmlNodeName
 {
 
 	/**
@@ -219,7 +219,7 @@ public enum XACMLNodeName
 		return value;
 	}
 
-	private XACMLNodeName(final String v)
+	private XacmlNodeName(final String v)
 	{
 		value = v;
 	}
@@ -231,9 +231,9 @@ public enum XACMLNodeName
 	 *            XACML node name
 	 * @return enum constant
 	 */
-	public static XACMLNodeName fromValue(final String nodeName)
+	public static XacmlNodeName fromValue(final String nodeName)
 	{
-		for (final XACMLNodeName c : XACMLNodeName.values())
+		for (final XacmlNodeName c : XacmlNodeName.values())
 		{
 			if (c.value.equals(nodeName))
 			{

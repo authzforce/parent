@@ -21,7 +21,7 @@ package org.ow2.authzforce.xacml.identifiers;
  * XACML Standard Datatypes
  *
  */
-public enum XACMLDatatypeId
+public enum XacmlDatatypeId
 {
 	// Mandatory
 	/**
@@ -102,7 +102,7 @@ public enum XACMLDatatypeId
 	/**
 	 * Length of {@link #XML_SCHEMA_URI_PREFIX}, used for extracting suffix from datatypes in order to create XACML function names, logging types of data, etc.
 	 */
-	public static final int XML_SCHEMA_URI_PREFIX_LENGTH = XACMLDatatypeId.XML_SCHEMA_URI_PREFIX.length();
+	public static final int XML_SCHEMA_URI_PREFIX_LENGTH = XacmlDatatypeId.XML_SCHEMA_URI_PREFIX.length();
 
 	private final String value;
 
@@ -116,7 +116,7 @@ public enum XACMLDatatypeId
 		return value;
 	}
 
-	private XACMLDatatypeId(final String v)
+	private XacmlDatatypeId(final String v)
 	{
 		value = v;
 	}
@@ -128,9 +128,9 @@ public enum XACMLDatatypeId
 	 *            datatype idenfifier (URI)
 	 * @return Datatype enum
 	 */
-	public static XACMLDatatypeId fromValue(final String datatypeURI)
+	public static XacmlDatatypeId fromValue(final String datatypeURI)
 	{
-		for (final XACMLDatatypeId c : XACMLDatatypeId.values())
+		for (final XacmlDatatypeId c : XacmlDatatypeId.values())
 		{
 			if (c.value.equals(datatypeURI))
 			{

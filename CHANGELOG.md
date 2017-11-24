@@ -2,8 +2,22 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 7.0.0
+### Changed
+- Managed dependency versions:
+	CXF: 3.1.10 -> 3.2.1
+	Spring: 4.3.6 -> 4.3.12
+    JAX-RS (javax.ws.rs-api): 2.0.1 -> 2.1
+- OWASP dependency-check maven plugin: 1.4.4.1 -> 3.0.1-
+- Java class naming convention: only first letter in acronym should be uppercase, e.g. XACMLVersion -> XacmlVersion
+
+### Added
+- Xacml3JaxbHelper utility class for processing XACML 3.0 schema-defined XML documents with JAXB and schema validation
+- XacmlStatusCode enum class for standard XACMl 3.0 status codes
+	
+
 ## 6.0.1
-## Fixed
+### Fixed
 - Path to license header file for license plugin
 
 
