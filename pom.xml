@@ -158,18 +158,18 @@
          <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>21.0</version>
+            <version>22.0</version>
          </dependency>
          <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20170516</version>
+            <version>20171018</version>
          </dependency>
          <dependency>
             <groupId>com.github.everit-org.json-schema</groupId>
             <artifactId>org.everit.json.schema</artifactId>
-            <!-- This version must use the version of artifact org.json/json specified above. -->
-            <version>1.6.0</version>
+            <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
+            <version>1.6.1</version>
          </dependency>
          <!-- /Third party dependencies -->
          <!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
