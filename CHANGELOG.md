@@ -2,6 +2,15 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 7.2.0
+### Changed
+- Managed dependency versions: 
+  - logback-classic: 1.1.9 -> 1.2.2 (to fix CVE affecting versions < 1.2.0)
+  - slf4j: 1.7.22 --> 1.7.25 (to match logback-classic version upgrade above)
+- Managed plugin versions:
+  - OWASP dependency-check plugin 3.0.1 -> 3.0.2 (fix blocking bug #978 on their github) 
+
+
 ## 7.1.0
 ### Changed
 - Managed dependency versions:
