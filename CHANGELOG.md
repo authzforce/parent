@@ -2,6 +2,18 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 7.3.0
+### Changed
+- Dependency versions: 
+  - logback-classic: 1.2.3
+  - logback-ext-spring: 0.1.5
+  - Spring: 4.3.14.RELEASE
+  - CXF: 3.2.4
+  - Saxon-HE: 9.8.0-12
+- Plugin versions:
+  - OWASP dependency-check-maven: 3.2.1 
+
+
 ## 7.2.0
 ### Changed
 - Managed dependency versions: 
