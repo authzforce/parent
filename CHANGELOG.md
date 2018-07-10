@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
-## Unreleased
+## 7.4.0
 ### Changed
 - Dependency versions:
 	- CXF: 3.2.5 (fix CVE-2018-1305, CVE-2018-1304)
