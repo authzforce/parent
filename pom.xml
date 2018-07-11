@@ -22,8 +22,8 @@
       <jaxb2-basics.version>0.11.1</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.25</slf4j.version>
-      <!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
-      <spring.version>4.3.14.RELEASE</spring.version>
+      <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
+      <spring.version>4.3.18.RELEASE</spring.version>
       <cxf.version>3.2.5</cxf.version>
    </properties>
    <url>${project.url}</url>
@@ -256,7 +256,7 @@
             <plugin>
                <groupId>org.jvnet.jaxb2.maven2</groupId>
                <artifactId>maven-jaxb2-plugin</artifactId>
-               <version>0.13.0</version>
+               <version>0.14.0</version>
                <configuration>
                   <debug>false</debug>
                   <strict>false</strict>
