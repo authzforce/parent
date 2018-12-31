@@ -16,7 +16,7 @@
       <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
       <currentYear>${maven.build.timestamp}</currentYear>
       <artifactId.prefix>authzforce-ce</artifactId.prefix>
-      <!-- Fix the project URL for all Authzforce project -->
+      <!-- Fix the project URL for all AuthzForce project -->
       <project.url>https://authzforce.ow2.org</project.url>
       <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
       <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
@@ -48,9 +48,8 @@
       <tag>HEAD</tag>
       <url>${git.url.base}/parent</url>
    </scm>
-   <!-- distributionManagement defined in oss-parent POM already -->
    <modules>
-      <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+      <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthzForce CE projects -->
       <module>xmlns-model</module>
       <module>atom-model</module>
       <module>xacml-model</module>
@@ -89,7 +88,7 @@
          </dependency>
          <dependency>
             <!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring 
-               dependencies used by other Authzforce projects. -->
+               dependencies used by other AuthzForce projects. -->
             <groupId>org.logback-extensions</groupId>
             <artifactId>logback-ext-spring</artifactId>
             <!-- TODO: upgrade so that logback-classic dependency version matches below -->
@@ -174,7 +173,7 @@
             <version>1.6.1</version>
          </dependency>
          <!-- /Third party dependencies -->
-         <!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+         <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
@@ -199,7 +198,7 @@
             <!-- Version updated automatically by maven jgitflow:release-start -->
             <version>7.4.1-SNAPSHOT</version>
          </dependency>
-         <!-- /Common AuthZForce CE dependencies -->
+         <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
    </dependencyManagement>
    <build>
