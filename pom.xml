@@ -5,7 +5,7 @@
    <version>7.4.1-SNAPSHOT</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
-   <description>Authzforce - Parent of all AuthzForce components</description>
+   <description>AuthzForce - Parent of all AuthzForce components</description>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <!-- Controls maven compiler plugin -source -->
@@ -19,7 +19,7 @@
       <!-- Fix the project URL for all Authzforce project -->
       <project.url>https://authzforce.ow2.org</project.url>
       <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
-      <jaxb2-basics.version>0.11.1</jaxb2-basics.version>
+      <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.25</slf4j.version>
       <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
@@ -36,9 +36,9 @@
    </licenses>
    <developers>
       <developer>
-         <name>The AuthZForce Team</name>
+         <name>The AuthzForce Team</name>
          <email>http://scr.im/azteam</email>
-         <organization>Thales Services</organization>
+         <organization>THALES</organization>
          <organizationUrl>http://thalesgroup.com</organizationUrl>
       </developer>
    </developers>
@@ -160,7 +160,7 @@
          <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>22.0</version>
+            <version>24.1.1-jre</version>
          </dependency>
          <dependency>
             <groupId>org.json</groupId>
@@ -214,7 +214,7 @@
                      <!-- Values to be substituted in template -->
                      <inceptionYear>${project.inceptionYear}</inceptionYear>
                      <currentYear>${currentYear}</currentYear>
-                     <copyrightOwner>Thales Services SAS</copyrightOwner>
+                     <copyrightOwner>THALES</copyrightOwner>
                      <projectName>AuthzForce CE</projectName>
                   </properties>
                   <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
@@ -252,6 +252,17 @@
                <groupId>org.owasp</groupId>
                <artifactId>dependency-check-maven</artifactId>
                <version>3.2.1</version>
+            </plugin>
+             <plugin>
+               <groupId>org.jvnet.jaxb2.maven2</groupId>
+               <artifactId>maven-jaxb22-plugin</artifactId>
+               <version>0.14.0</version>
+               <configuration>
+                  <debug>false</debug>
+                  <strict>false</strict>
+                  <verbose>false</verbose>
+                  <removeOldOutput>true</removeOldOutput>
+               </configuration>
             </plugin>
             <plugin>
                <groupId>org.jvnet.jaxb2.maven2</groupId>
