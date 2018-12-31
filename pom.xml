@@ -2,10 +2,10 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>7.4.0</version>
+   <version>7.5.0</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
-   <description>Authzforce - Parent of all AuthzForce components</description>
+   <description>AuthzForce - Parent of all AuthzForce components</description>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <!-- Controls maven compiler plugin -source -->
@@ -16,14 +16,14 @@
       <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
       <currentYear>${maven.build.timestamp}</currentYear>
       <artifactId.prefix>authzforce-ce</artifactId.prefix>
-      <!-- Fix the project URL for all Authzforce project -->
+      <!-- Fix the project URL for all AuthzForce project -->
       <project.url>https://authzforce.ow2.org</project.url>
       <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
-      <jaxb2-basics.version>0.11.1</jaxb2-basics.version>
+      <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.25</slf4j.version>
-      <!-- This version must match the Spring version used by 'logback-ext-spring' in dependencyManagement. -->
-      <spring.version>4.3.14.RELEASE</spring.version>
+      <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
+      <spring.version>4.3.18.RELEASE</spring.version>
       <cxf.version>3.2.5</cxf.version>
    </properties>
    <url>${project.url}</url>
@@ -36,9 +36,9 @@
    </licenses>
    <developers>
       <developer>
-         <name>The AuthZForce Team</name>
+         <name>The AuthzForce Team</name>
          <email>http://scr.im/azteam</email>
-         <organization>Thales Services</organization>
+         <organization>THALES</organization>
          <organizationUrl>http://thalesgroup.com</organizationUrl>
       </developer>
    </developers>
@@ -48,9 +48,8 @@
       <tag>HEAD</tag>
       <url>${git.url.base}/parent</url>
    </scm>
-   <!-- distributionManagement defined in oss-parent POM already -->
    <modules>
-      <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthZForce CE projects -->
+      <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthzForce CE projects -->
       <module>xmlns-model</module>
       <module>atom-model</module>
       <module>xacml-model</module>
@@ -89,7 +88,7 @@
          </dependency>
          <dependency>
             <!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring 
-               dependencies used by other Authzforce projects. -->
+               dependencies used by other AuthzForce projects. -->
             <groupId>org.logback-extensions</groupId>
             <artifactId>logback-ext-spring</artifactId>
             <!-- TODO: upgrade so that logback-classic dependency version matches below -->
@@ -160,7 +159,7 @@
          <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>22.0</version>
+            <version>24.1.1-jre</version>
          </dependency>
          <dependency>
             <groupId>org.json</groupId>
@@ -174,32 +173,32 @@
             <version>1.6.1</version>
          </dependency>
          <!-- /Third party dependencies -->
-         <!-- Common AuthZForce CE dependencies. Only child modules here (see <modules>). -->
+         <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.4.0</version>
+            <version>7.5.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.4.0</version>
+            <version>7.5.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.4.0</version>
+            <version>7.5.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.4.0</version>
+            <version>7.5.0</version>
          </dependency>
-         <!-- /Common AuthZForce CE dependencies -->
+         <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
    </dependencyManagement>
    <build>
@@ -214,7 +213,7 @@
                      <!-- Values to be substituted in template -->
                      <inceptionYear>${project.inceptionYear}</inceptionYear>
                      <currentYear>${currentYear}</currentYear>
-                     <copyrightOwner>Thales Services SAS</copyrightOwner>
+                     <copyrightOwner>THALES</copyrightOwner>
                      <projectName>AuthzForce CE</projectName>
                   </properties>
                   <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
@@ -253,10 +252,21 @@
                <artifactId>dependency-check-maven</artifactId>
                <version>3.2.1</version>
             </plugin>
+             <plugin>
+               <groupId>org.jvnet.jaxb2.maven2</groupId>
+               <artifactId>maven-jaxb22-plugin</artifactId>
+               <version>0.14.0</version>
+               <configuration>
+                  <debug>false</debug>
+                  <strict>false</strict>
+                  <verbose>false</verbose>
+                  <removeOldOutput>true</removeOldOutput>
+               </configuration>
+            </plugin>
             <plugin>
                <groupId>org.jvnet.jaxb2.maven2</groupId>
                <artifactId>maven-jaxb2-plugin</artifactId>
-               <version>0.13.0</version>
+               <version>0.14.0</version>
                <configuration>
                   <debug>false</debug>
                   <strict>false</strict>

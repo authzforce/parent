@@ -2,6 +2,20 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 7.5.0
+### Changed
+- Upgraded managed dependency versions:
+	- Spring: 4.3.18
+	- guava: 24.1.1-jre
+	- jaxb2-basics: 1.11.1
+
+- Upgraded managed build plugin versions:
+	- jaxb2-rich-contact-plugin version: 2.0.1
+
+- Replaced maven-jaxb2-plugin with maven-jaxb22-plugin v0.14.0 for Java 1.8 compatibility
+- Changed company name to Thales in copyright
+
+
 ## 7.4.0
 ### Changed
 - Dependency versions:
