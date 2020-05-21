@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>7.5.1</version>
+   <version>7.6.0</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -23,8 +23,8 @@
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.25</slf4j.version>
       <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
-      <spring.version>4.3.20.RELEASE</spring.version>
-      <cxf.version>3.2.5</cxf.version>
+      <spring.version>5.1.14.RELEASE</spring.version>
+      <cxf.version>3.3.6</cxf.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -164,13 +164,13 @@
          <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20171018</version>
+            <version>20190722</version>
          </dependency>
          <dependency>
             <groupId>com.github.everit-org.json-schema</groupId>
             <artifactId>org.everit.json.schema</artifactId>
             <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
-            <version>1.6.1</version>
+            <version>1.12.1</version>
          </dependency>
          <!-- /Third party dependencies -->
          <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
@@ -178,25 +178,25 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.5.1</version>
+            <version>7.6.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.5.1</version>
+            <version>7.6.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.5.1</version>
+            <version>7.6.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.5.1</version>
+            <version>7.6.0</version>
          </dependency>
          <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
