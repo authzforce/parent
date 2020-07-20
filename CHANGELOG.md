@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 7.6.1
+### Changed
+- Upgraded managed dependency slf4j-api to v1.7.30 to fix CVE
+- Upgraded plugin OWASP dependency-check to v5.3.2
+
+
 ## 7.6.0
 ### Changed
 - Upgraded managed dependencies:
