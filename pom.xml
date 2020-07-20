@@ -21,7 +21,7 @@
       <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
       <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
-      <slf4j.version>1.7.25</slf4j.version>
+      <slf4j.version>1.7.30</slf4j.version>
       <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
       <spring.version>5.1.14.RELEASE</spring.version>
       <cxf.version>3.3.6</cxf.version>
@@ -250,7 +250,7 @@
                <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
                <groupId>org.owasp</groupId>
                <artifactId>dependency-check-maven</artifactId>
-               <version>4.0.2</version>
+               <version>5.3.2</version>
             </plugin>
              <plugin>
                <groupId>org.jvnet.jaxb2.maven2</groupId>
