@@ -22,7 +22,7 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and match the XACML version integers defined in SunXACML PolicyMetadata class.
+ * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and standard URI from XACML specification is returned by {@link XacmlAttributeCategory#value()}
  * 
  */
 public enum XacmlAttributeCategory
@@ -35,7 +35,7 @@ public enum XacmlAttributeCategory
 	
 	/**
 	 * urn:oasis:names:tc:xacml:1.0:subject-category:codebase
-	 */
+	 */.
 	XACML_1_0_SUBJECT_CODEBASE("urn:oasis:names:tc:xacml:1.0:subject-category:codebase"), 
 	
 	/**
