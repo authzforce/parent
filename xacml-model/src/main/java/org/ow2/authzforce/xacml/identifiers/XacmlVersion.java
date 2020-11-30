@@ -22,8 +22,7 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XacmlVersion#ordinal()} and match
- * the XACML version integers defined in SunXACML PolicyMetadata class.
+ * XACML Version. The actual version IDs are returned by {@link XacmlVersion#ordinal()} and corresponding XML namespaces returned by {@link XacmlVersion#getNamespace()}.
  * 
  */
 public enum XacmlVersion
