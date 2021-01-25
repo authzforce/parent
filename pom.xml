@@ -2,16 +2,12 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>7.6.1</version>
+   <version>8.0.0</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthzForce - Parent of all AuthzForce components</description>
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <!-- Controls maven compiler plugin -source -->
-      <maven.compiler.source>1.8</maven.compiler.source>
-      <!-- Controls maven compiler plugin -target and pmd plugin targetJdk -->
-      <maven.compiler.target>1.8</maven.compiler.target>
       <!-- Dynamic computation of current year for license headers -->
       <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
       <currentYear>${maven.build.timestamp}</currentYear>
@@ -19,12 +15,16 @@
       <!-- Fix the project URL for all AuthzForce project -->
       <project.url>https://authzforce.ow2.org</project.url>
       <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
-      <jaxb2-basics.version>1.11.1</jaxb2-basics.version>
+      <!-- Jakarta XML Binding version -->
+      <jaxb.version>2.3.3</jaxb.version>
+      <jaxb2-basics.version>0.12.0</jaxb2-basics.version>
       <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
       <slf4j.version>1.7.30</slf4j.version>
-      <!-- This version must match the Spring version's MAJOR.MINOR used by 'logback-ext-spring' and cxf-spring-boot-* in dependencyManagement. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
-      <spring.version>5.1.14.RELEASE</spring.version>
-      <cxf.version>3.3.6</cxf.version>
+      <cxf.version>3.4.1</cxf.version>
+      <!-- This version must match the spring-boot-starter's MAJOR.MINOR parts of the version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
+      <spring-boot-starter.version>2.3.5.RELEASE</spring-boot-starter.version>
+      <!-- Spring core version. Must match the MAJOR.MINOR parts of ${spring-boot-starter.version}'s spring-core dependency version -->
+      <spring.version>5.2.10.RELEASE</spring.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -37,7 +37,6 @@
    <developers>
       <developer>
          <name>The AuthzForce Team</name>
-         <email>http://scr.im/azteam</email>
          <organization>THALES</organization>
          <organizationUrl>http://thalesgroup.com</organizationUrl>
       </developer>
@@ -59,6 +58,25 @@
       <dependencies>
          <!-- Third party dependencies -->
          <dependency>
+            <!-- JAXB API. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jaxb.version}</version>
+         </dependency>
+         <!-- JAXB Runtime. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
+         <!--
+         <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
+         </dependency>
+         -->
+         <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.version}</version>
+         </dependency>
+         <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics-runtime</artifactId>
             <version>${jaxb2-basics.version}</version>
@@ -77,13 +95,13 @@
          <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <!-- This version must use the same version of slfj-api used by 'logback-classic' above. -->
+            <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
             <version>${slf4j.version}</version>
          </dependency>
          <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
-            <!-- This version must use the same version of slfj-api used by 'logback-classic' above. -->
+            <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
             <version>${slf4j.version}</version>
          </dependency>
          <dependency>
@@ -126,10 +144,10 @@
             </exclusions>
          </dependency>
          <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
             <!-- Version must match version used by cxf-rt-frontend-jaxrs dependency below -->
-            <version>2.1</version>
+            <version>2.1.6</version>
          </dependency>
          <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -149,17 +167,17 @@
          <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>4.0.1</version>
          </dependency>
          <dependency>
             <groupId>net.sf.saxon</groupId>
             <artifactId>Saxon-HE</artifactId>
-            <version>9.8.0-12</version>
+            <version>10.3</version>
          </dependency>
          <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>24.1.1-jre</version>
+            <version>30.0-jre</version>
          </dependency>
          <dependency>
             <groupId>org.json</groupId>
@@ -172,31 +190,36 @@
             <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
             <version>1.12.1</version>
          </dependency>
+         <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+         </dependency>
          <!-- /Third party dependencies -->
          <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.1</version>
+            <version>8.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.1</version>
+            <version>8.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.1</version>
+            <version>8.0.0</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.1</version>
+            <version>8.0.0</version>
          </dependency>
          <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
@@ -228,40 +251,32 @@
                <!-- target JDK already set by parent project's maven.compiler.target property -->
             </plugin>
             <plugin>
-               <groupId>org.codehaus.mojo</groupId>
-               <artifactId>findbugs-maven-plugin</artifactId>
-               <version>3.0.4</version>
+               <groupId>com.github.spotbugs</groupId>
+               <artifactId>spotbugs-maven-plugin</artifactId>
+               <version>4.0.4</version>
                <configuration>
-                  <!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'Low'. -->
-                  <effort>Max</effort>
-                  <!-- Reports all bugs (other values are medium and max) -->
-                  <threshold>Low</threshold>
-                  <failOnError>true</failOnError>
-                  <plugins>
-                     <plugin>
-                        <groupId>com.h3xstream.findsecbugs</groupId>
-                        <artifactId>findsecbugs-plugin</artifactId>
-                        <version>LATEST</version> <!-- Auto-update to the latest stable -->
-                     </plugin>
-                  </plugins>
+                   <!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'Low'. -->
+                   <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                   <threshold>Low</threshold>
+                   <failOnError>true</failOnError>
+                   <!-- <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile> -->
+                   <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
+                   <plugins>
+                       <plugin>
+                           <groupId>com.h3xstream.findsecbugs</groupId>
+                           <artifactId>findsecbugs-plugin</artifactId>
+                           <!-- Auto-update to the latest stable -->
+                           <version>LATEST</version>
+                       </plugin>
+                   </plugins>
                </configuration>
-            </plugin>
+           </plugin>
             <plugin>
                <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
                <groupId>org.owasp</groupId>
                <artifactId>dependency-check-maven</artifactId>
-               <version>5.3.2</version>
-            </plugin>
-             <plugin>
-               <groupId>org.jvnet.jaxb2.maven2</groupId>
-               <artifactId>maven-jaxb22-plugin</artifactId>
-               <version>0.14.0</version>
-               <configuration>
-                  <debug>false</debug>
-                  <strict>false</strict>
-                  <verbose>false</verbose>
-                  <removeOldOutput>true</removeOldOutput>
-               </configuration>
+               <version>6.0.3</version>
             </plugin>
             <plugin>
                <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -288,12 +303,17 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-compiler-plugin</artifactId>
-               <version>2.3.2</version>
+               <version>3.8.1</version>
+               <configuration>
+                  <release>11</release>
+                  <compilerArgument>-Xlint:deprecation</compilerArgument>
+                  <compilerArgument>-Xlint:unchecked</compilerArgument>
+               </configuration>
             </plugin>
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-source-plugin</artifactId>
-               <version>3.0.1</version>
+               <version>3.2.0</version>
                <executions>
                   <execution>
                      <id>attach-sources</id>
@@ -306,7 +326,7 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-javadoc-plugin</artifactId>
-               <version>2.10.4</version>
+               <version>3.2.0</version>
                <executions>
                   <execution>
                      <id>attach-javadocs</id>
@@ -319,11 +339,11 @@
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-jar-plugin</artifactId>
-               <version>3.0.2</version>
+               <version>3.2.0</version>
             </plugin>
             <plugin>
                <artifactId>maven-surefire-plugin</artifactId>
-               <version>2.19.1</version>
+               <version>2.22.2</version>
             </plugin>
             <plugin>
                <groupId>org.apache.maven.plugins</groupId>
@@ -342,7 +362,7 @@
             <plugin>
                <groupId>org.sonatype.plugins</groupId>
                <artifactId>nexus-staging-maven-plugin</artifactId>
-               <version>1.6.7</version>
+               <version>1.6.8</version>
                <extensions>true</extensions>
                <configuration>
                   <serverId>ossrh</serverId>

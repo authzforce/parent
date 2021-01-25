@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>org.ow2.authzforce</groupId>
 		<artifactId>authzforce-ce-parent</artifactId>
-		<version>7.6.1</version>
+		<version>8.0.0</version>
 	</parent>
 	<artifactId>authzforce-ce-xacml-model</artifactId>
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -24,6 +24,28 @@
 		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics-runtime</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<scope>test</scope>
+		</dependency>
+		-->
+		<dependency>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -57,7 +79,7 @@
 			</plugin>
 			<plugin>
 				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb22-plugin</artifactId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
 				<configuration>
 					<verbose>false</verbose>
 					<extension>true</extension>
@@ -102,6 +124,89 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<!--
+         Issues porting the maven-jaxb2-plugin to Java 11:
+         - Plugin dev seems dead: https://github.com/highsource/maven-jaxb2-plugin/issues/193
+         - Not compatible with new Jakarta XML Binding (Starting with 3.0.0, jakarta.xml.bind replaces javax.xml.bind packages): https://github.com/highsource/maven-jaxb2-plugin/issues/191
+         - Not compatible with JDK 11+: https://github.com/highsource/maven-jaxb2-plugin/issues/190, https://github.com/highsource/maven-jaxb2-plugin/issues/167
+
+         Alternative: mojohaus/jaxb2-maven-plugin
+         Supporting new Jakarta-style JAXB API: https://github.com/mojohaus/jaxb2-maven-plugin/issues/138
+
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        -->
+			<!--
+			<plugin>
+
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.5.0</version>
+				<configuration>
+					<verbose>true</verbose>
+					<extension>true</extension>
+					<strict>true</strict>
+					<laxSchemaValidation>true</laxSchemaValidation>
+					<sources>
+						<source>src/main/resources/xml.xsd</source>
+					</sources>
+					<xsdPathWithinArtifact>.</xsdPathWithinArtifact>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+	-->
+			<!-- Starting with Jaxb 3.0.0, package names have been changed to jakarta.xml.bind-->
+			<!--
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>rename-old-jaxb-package-names-for-java-11</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+                                <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">                                 
+                                    <include name="**/*.java" />
+                                  </replace>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			-->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>false</skipTests>
+					<systemPropertyVariables>
+						<javax.xml.accessExternalSchema>all</javax.xml.accessExternalSchema>
+					</systemPropertyVariables>
+					<environmentVariables>
+						<!-- Test environment variable for DefaultEnvironmentPropertiesTest class -->
+						<AUTHZFORCE_DATA_DIR>/tmp/authzforce</AUTHZFORCE_DATA_DIR>
+					</environmentVariables>
+					<properties>
+						<property>
+							<name>surefire.testng.verbose</name>
+							<!-- verbosity level from 0 to 10 (10 is the most detailed), or -1 for debug. More info: http://maven.apache.org/surefire/maven-surefire-plugin/examples/testng.html -->
+							<value>3</value>
+						</property>
+					</properties>
+					<includes>
+						<include>**/MainTest.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

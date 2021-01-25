@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2020 THALES.
+ * Copyright 2012-2021 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -17,9 +17,8 @@
  */
 package org.ow2.authzforce.xacml;
 
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
+import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
@@ -30,10 +29,9 @@ import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-
-import oasis.names.tc.xacml._3_0.core.schema.wd_17.ObjectFactory;
-
-import org.xml.sax.SAXException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
 /**
  * XACML (XML) document - as defined by XACML 3.0 core specification's XML schema - processing utilities based on JAXB API
@@ -52,6 +50,7 @@ public final class Xacml3JaxbHelper
 	 * XACML 3.0 schema
 	 */
 	public static final Schema XACML_3_0_SCHEMA;
+
 	static
 	{
 		final SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);

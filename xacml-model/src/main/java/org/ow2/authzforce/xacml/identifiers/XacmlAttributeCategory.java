@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2020 THALES.
+ * Copyright 2012-2021 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -22,7 +22,7 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and match the XACML version integers defined in SunXACML PolicyMetadata class.
+ * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and standard URI from XACML specification is returned by {@link XacmlAttributeCategory#value()}
  * 
  */
 public enum XacmlAttributeCategory
