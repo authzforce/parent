@@ -1,11 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.ow2.authzforce</groupId>
         <artifactId>authzforce-ce-parent</artifactId>
-        <version>7.6.2-SNAPSHOT</version>
+        <version>8.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>authzforce-ce-atom-model</artifactId>
     <packaging>jar</packaging>
@@ -81,7 +79,7 @@
 						<configuration>
 							<target>
                                 <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">                                 
-                                    <include name="**/*.java"/>
+                                    <include name="**/*.java" />
                                   </replace>
 							</target>
 						</configuration>

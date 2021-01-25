@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>7.6.2-SNAPSHOT</version>
+   <version>8.0.1-SNAPSHOT</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -202,25 +201,25 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.2-SNAPSHOT</version>
+            <version>8.0.1-SNAPSHOT</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.2-SNAPSHOT</version>
+            <version>8.0.1-SNAPSHOT</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.2-SNAPSHOT</version>
+            <version>8.0.1-SNAPSHOT</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>7.6.2-SNAPSHOT</version>
+            <version>8.0.1-SNAPSHOT</version>
          </dependency>
          <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
