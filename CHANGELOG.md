@@ -2,6 +2,16 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.0.0
+### Changed
+- Upgraded code to Java 11. Java 8 no longer supported.
+- Upgrade to JAXB (Jakarta XML Binding) v2.3.3
+- Upgraded managed dependency versions for other authzforce projects:
+    - Jakarta RESTful Web Services v2.1.6
+    - Apache CXF v3.4.1
+    - Spring Boot Starter v2.3.5
+
+
 ## 7.6.1
 ### Changed
 - Upgraded managed dependency slf4j-api to v1.7.30 to fix CVE
