@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2020 THALES.
+ * Copyright 2012-2021 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -35,7 +35,7 @@ public enum XacmlAttributeCategory
 	
 	/**
 	 * urn:oasis:names:tc:xacml:1.0:subject-category:codebase
-	 */.
+	 */
 	XACML_1_0_SUBJECT_CODEBASE("urn:oasis:names:tc:xacml:1.0:subject-category:codebase"), 
 	
 	/**

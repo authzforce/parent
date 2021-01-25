@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xacml:Attribute xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xacml="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
 	AttributeId="some:sample:attribute:id" IncludeInResult="false" >
-	<xacml:AttributeValue DataType="http://tempuri.org" xsi:type="xacml:AttributeValueType">XXX</xacml:AttributeValue>
+	<xacml:AttributeValue DataType="http://tempuri.org" xsi:type="xacml:AttributeValueType">8uBPbvAeBs5SfxR2</xacml:AttributeValue>
 </xacml:Attribute>

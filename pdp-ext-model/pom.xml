@@ -15,6 +15,12 @@
 		<tag>HEAD</tag>
 		<url>${git.url.base}/parent</url>
 	</scm>
+	<dependencies>
+		<dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+        </dependency>
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
@@ -53,6 +59,29 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Starting with Jaxb 3.0.0, package names have been changed to jakarta.xml.bind-->
+			<!--
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>rename-old-jaxb-package-names-for-java-11</id>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+                                <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">                                 
+                                    <include name="**/*.java"/>
+                                  </replace>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			-->
 		</plugins>
 	</build>
 </project>
