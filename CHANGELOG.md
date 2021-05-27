@@ -2,7 +2,7 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
-## Unreleased
+## 8.0.1
 ### Fixed
 - OWASP dependency-check [plugin fix](https://github.com/jeremylong/DependencyCheck/issues/3360) (NPE): upgraded to v6.1.6
 
