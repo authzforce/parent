@@ -2,6 +2,11 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## Unreleased
+### Fixed
+- OWASP dependency-check [plugin fix](https://github.com/jeremylong/DependencyCheck/issues/3360) (NPE): upgraded to v6.1.6
+
+
 ## 8.0.0
 ### Changed
 - Upgraded code to Java 11. Java 8 no longer supported.
