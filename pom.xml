@@ -24,7 +24,7 @@
       <!-- This version must match the spring-boot-starter's MAJOR.MINOR parts of the version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
       <spring-boot-starter.version>2.3.5.RELEASE</spring-boot-starter.version>
       <!-- Spring core version. Must match the MAJOR.MINOR parts of ${spring-boot-starter.version}'s spring-core dependency version -->
-      <spring.version>5.2.10.RELEASE</spring.version>
+      <spring.version>5.2.15.RELEASE</spring.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
