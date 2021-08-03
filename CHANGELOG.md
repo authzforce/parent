@@ -2,6 +2,11 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.0.2
+### Fixed
+- CVE-2021-22118: updated Spring version to 5.2.15
+
+
 ## 8.0.1
 ### Fixed
 - OWASP dependency-check [plugin fix](https://github.com/jeremylong/DependencyCheck/issues/3360) (NPE): upgraded to v6.1.6
