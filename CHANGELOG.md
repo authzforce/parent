@@ -2,6 +2,11 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.0.4
+### Fixed
+- CVE-2021-22096: upgraded Spring dependency to 5.2.18
+
+
 ## 8.0.3
 ### Fixed
 - CVE-2021-22696 and CVE-2021-3046: upgraded Apache CXF version to 3.4.4
