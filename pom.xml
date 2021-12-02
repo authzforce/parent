@@ -2,7 +2,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>org.ow2.authzforce</groupId>
    <artifactId>authzforce-ce-parent</artifactId>
-   <version>8.0.3</version>
+   <version>8.0.4</version>
    <packaging>pom</packaging>
    <name>${project.groupId}:${project.artifactId}</name>
    <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -24,7 +24,7 @@
       <!-- This version must match the spring-boot-starter's MAJOR.MINOR parts of the version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
       <spring-boot-starter.version>2.3.5.RELEASE</spring-boot-starter.version>
       <!-- Spring core version. Must match the MAJOR.MINOR parts of ${spring-boot-starter.version}'s spring-core dependency version -->
-      <spring.version>5.2.15.RELEASE</spring.version>
+      <spring.version>5.2.18.RELEASE</spring.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -201,25 +201,25 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.0.3</version>
+            <version>8.0.4</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-atom-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.0.3</version>
+            <version>8.0.4</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-xacml-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.0.3</version>
+            <version>8.0.4</version>
          </dependency>
          <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
             <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.0.3</version>
+            <version>8.0.4</version>
          </dependency>
          <!-- /Common AuthzForce CE dependencies -->
       </dependencies>
