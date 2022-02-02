@@ -1,5 +1,5 @@
 /**
- * Copyright 2012-2021 THALES.
+ * Copyright 2012-2022 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -82,16 +82,20 @@ public enum XacmlAttributeId
 	 */
 	XACML_1_0_RESOURCE_LOCATION("urn:oasis:names:tc:xacml:1.0:resource:resource-location"),
 	/**
-	 * The standard URI for the resource's scope in XACML v3.0 (resp. v2.0) multiple decision (resp. resource) profile.
-	 * 
-	 * @see XACMLResourceScope possible scopes
-	 */
-	XACML_2_0_RESOURCE_SCOPE("urn:oasis:names:tc:xacml:2.0:resource:scope"),
-	/**
 	 * 
 	 */
 	XACML_1_0_RESOURCE_SIMPLE_FILE_NAME("urn:oasis:names:tc:xacml:1.0:resource:simple-file-name"),
+	/**
+	 *
+	 */
+	XACML_2_0_RESOURCE_TARGET_NAMESPACE("urn:oasis:names:tc:xacml:2.0:resource:target-namespace"),
 
+	/**
+	 * The standard URI for the resource's scope in XACML v3.0 (resp. v2.0) multiple decision (resp. resource) profile.
+	 *
+	 * @see XACMLResourceScope possible scopes
+	 */
+	XACML_2_0_RESOURCE_SCOPE("urn:oasis:names:tc:xacml:2.0:resource:scope"),
 	/**
 	 * XACML v3.0 Multiple Decision Profile Version 1.0
 	 */
@@ -106,6 +110,11 @@ public enum XacmlAttributeId
 	 * urn:oasis:names:tc:xacml:1.0:action:action-id
 	 */
 	XACML_1_0_ACTION_ID("urn:oasis:names:tc:xacml:1.0:action:action-id"),
+
+	/**
+	 *
+	 */
+	XACML_1_0_ACTION_NAMESPACE("urn:oasis:names:tc:xacml:1.0:action:action-namespace"),
 
 	/**
 	 * 
