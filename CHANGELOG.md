@@ -1,6 +1,13 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+## 8.1.0
+### Fixed
+- CVE-2021-22060: Spring upgraded to 5.2.19
+
+### Added
+- XacmlAttributeId enum: added standard attribute 'urn:oasis:names:tc:xacml:2.0:resource:target-namespace'
+
 
 ## 8.0.4
 ### Fixed
