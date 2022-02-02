@@ -24,7 +24,7 @@
       <!-- This version must match the spring-boot-starter's MAJOR.MINOR parts of the version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
       <spring-boot-starter.version>2.3.5.RELEASE</spring-boot-starter.version>
       <!-- Spring core version. Must match the MAJOR.MINOR parts of ${spring-boot-starter.version}'s spring-core dependency version -->
-      <spring.version>5.2.18.RELEASE</spring.version>
+      <spring.version>5.2.19.RELEASE</spring.version>
    </properties>
    <url>${project.url}</url>
    <inceptionYear>2012</inceptionYear>
@@ -117,7 +117,7 @@
             <artifactId>logback-classic</artifactId>
             <!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
             <!-- Versions before 1.2.0 (excluded) affected by CVE-2017-5929 -->
-            <version>1.2.3</version>
+            <version>1.2.10</version>
          </dependency>
          <dependency>
             <groupId>org.springframework</groupId>
@@ -261,7 +261,8 @@
                    <threshold>Low</threshold>
                    <failOnError>true</failOnError>
                    <!-- <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile> -->
-                   <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
+                   <!--suppress UnresolvedMavenProperty -->
+                  <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
                    <plugins>
                        <plugin>
                            <groupId>com.h3xstream.findsecbugs</groupId>
