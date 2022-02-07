@@ -1,6 +1,28 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+
+## 8.2.0
+### Changed
+- Upgraded SLF4j to 1.7.32
+- Upgraded Apache CXF to 3.5.0
+- Upgraded Spring Boot Starter to 2.6.1
+- Upgraded Spring core to 5.3.14
+- Upgraded Spotbugs maven plugin to 4.5.3
+- upgraded Saxon-HE to 10.6
+- Upgraded Guava to 31.0
+- Upgraded org.json:json to 20211205
+- upgraded JUnit to 4.13.2
+- Upgraded license-maven-plugin to 4.1
+- Upgraded maven-pmd-plugin to 3.15.0 and PMD to 6.42.0
+- Upgraded dependency-check-maven to 6.5.3
+- Upgraded maven-compiler-plugin to 3.9.0
+- Upgraded maven-source-plugin to 3.2.1
+- Upgraded maven-javadoc-plugin to 3.3.1
+- Upgraded maven-jar-plugin to 3.2.2
+- Upgraded maven-gpg-plugin to 3.0.1
+
+
 ## 8.1.0
 ### Fixed
 - CVE-2021-22060: Spring upgraded to 5.2.19
