@@ -1,423 +1,453 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-   <modelVersion>4.0.0</modelVersion>
-   <groupId>org.ow2.authzforce</groupId>
-   <artifactId>authzforce-ce-parent</artifactId>
-   <version>8.1.0</version>
-   <packaging>pom</packaging>
-   <name>${project.groupId}:${project.artifactId}</name>
-   <description>AuthzForce - Parent of all AuthzForce components</description>
-   <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <!-- Dynamic computation of current year for license headers -->
-      <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
-      <currentYear>${maven.build.timestamp}</currentYear>
-      <artifactId.prefix>authzforce-ce</artifactId.prefix>
-      <!-- Fix the project URL for all AuthzForce project -->
-      <project.url>https://authzforce.ow2.org</project.url>
-      <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
-      <!-- Jakarta XML Binding version -->
-      <jaxb.version>2.3.3</jaxb.version>
-      <jaxb2-basics.version>0.12.0</jaxb2-basics.version>
-      <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
-      <slf4j.version>1.7.30</slf4j.version>
-      <cxf.version>3.4.4</cxf.version>
-      <!-- This version must match the spring-boot-starter's MAJOR.MINOR parts of the version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
-      <spring-boot-starter.version>2.3.5.RELEASE</spring-boot-starter.version>
-      <!-- Spring core version. Must match the MAJOR.MINOR parts of ${spring-boot-starter.version}'s spring-core dependency version -->
-      <spring.version>5.2.19.RELEASE</spring.version>
-   </properties>
-   <url>${project.url}</url>
-   <inceptionYear>2012</inceptionYear>
-   <licenses>
-      <license>
-         <name>Apache License Version 2.0</name>
-         <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-      </license>
-   </licenses>
-   <developers>
-      <developer>
-         <name>The AuthzForce Team</name>
-         <organization>THALES</organization>
-         <organizationUrl>http://thalesgroup.com</organizationUrl>
-      </developer>
-   </developers>
-   <scm>
-      <connection>scm:git:${git.url.base}/parent.git</connection>
-      <developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
-      <tag>HEAD</tag>
-      <url>${git.url.base}/parent</url>
-   </scm>
-   <modules>
-      <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthzForce CE projects -->
-      <module>xmlns-model</module>
-      <module>atom-model</module>
-      <module>xacml-model</module>
-      <module>pdp-ext-model</module>
-   </modules>
-   <dependencyManagement>
-      <dependencies>
-         <!-- Third party dependencies -->
-         <dependency>
-            <!-- JAXB API. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jaxb.version}</version>
-         </dependency>
-         <!-- JAXB Runtime. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
-         <!--
-         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb.version}</version>
-         </dependency>
-         -->
-         <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-basics-runtime</artifactId>
-            <version>${jaxb2-basics.version}</version>
-         </dependency>
-         <dependency>
-            <!-- For loading XML schemas with OASIS XML catalogs (CatalogManager) -->
-            <groupId>xml-resolver</groupId>
-            <artifactId>xml-resolver</artifactId>
-            <version>1.2</version>
-         </dependency>
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
-            <version>${slf4j.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>log4j-over-slf4j</artifactId>
-            <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
-            <version>${slf4j.version}</version>
-         </dependency>
-         <dependency>
-            <!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring 
-               dependencies used by other AuthzForce projects. -->
-            <groupId>org.logback-extensions</groupId>
-            <artifactId>logback-ext-spring</artifactId>
-            <!-- TODO: upgrade so that logback-classic dependency version matches below -->
-            <version>0.1.5</version>
-         </dependency>
-         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
-            <!-- Versions before 1.2.0 (excluded) affected by CVE-2017-5929 -->
-            <version>1.2.10</version>
-         </dependency>
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-               <exclusion>
-                  <!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
-                  <artifactId>commons-logging</artifactId>
-                  <groupId>commons-logging</groupId>
-               </exclusion>
-            </exclusions>
-         </dependency>
-         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-            <exclusions>
-               <exclusion>
-                  <!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
-                  <artifactId>commons-logging</artifactId>
-                  <groupId>commons-logging</groupId>
-               </exclusion>
-            </exclusions>
-         </dependency>
-         <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta.ws.rs-api</artifactId>
-            <!-- Version must match version used by cxf-rt-frontend-jaxrs dependency below -->
-            <version>2.1.6</version>
-         </dependency>
-         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-client</artifactId>
-            <version>${cxf.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-            <version>${cxf.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-rs-service-description</artifactId>
-            <version>${cxf.version}</version>
-         </dependency>
-         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-         </dependency>
-         <dependency>
-            <groupId>net.sf.saxon</groupId>
-            <artifactId>Saxon-HE</artifactId>
-            <version>10.3</version>
-         </dependency>
-         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>30.0-jre</version>
-         </dependency>
-         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20190722</version>
-         </dependency>
-         <dependency>
-            <groupId>com.github.everit-org.json-schema</groupId>
-            <artifactId>org.everit.json.schema</artifactId>
-            <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
-            <version>1.12.1</version>
-         </dependency>
-         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-         </dependency>
-         <!-- /Third party dependencies -->
-         <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
-         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
-            <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.1.0</version>
-         </dependency>
-         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${artifactId.prefix}-atom-model</artifactId>
-            <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.1.0</version>
-         </dependency>
-         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${artifactId.prefix}-xacml-model</artifactId>
-            <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.1.0</version>
-         </dependency>
-         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
-            <!-- Version updated automatically by maven jgitflow:release-start -->
-            <version>8.1.0</version>
-         </dependency>
-         <!-- /Common AuthzForce CE dependencies -->
-      </dependencies>
-   </dependencyManagement>
-   <build>
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <groupId>com.mycila</groupId>
-               <artifactId>license-maven-plugin</artifactId>
-               <version>3.0</version>
-               <configuration>
-                  <properties>
-                     <!-- Values to be substituted in template -->
-                     <inceptionYear>${project.inceptionYear}</inceptionYear>
-                     <currentYear>${currentYear}</currentYear>
-                     <copyrightOwner>THALES</copyrightOwner>
-                     <projectName>AuthzForce CE</projectName>
-                  </properties>
-                  <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
-                  <header>license/alv2-header.txt</header>
-                  <strictCheck>true</strictCheck>
-               </configuration>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-pmd-plugin</artifactId>
-               <version>3.7</version>
-               <!-- target JDK already set by parent project's maven.compiler.target property -->
-            </plugin>
-            <plugin>
-               <groupId>com.github.spotbugs</groupId>
-               <artifactId>spotbugs-maven-plugin</artifactId>
-               <version>4.0.4</version>
-               <configuration>
-                   <!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'Low'. -->
-                   <effort>Max</effort>
-                    <!-- Reports all bugs (other values are medium and max) -->
-                   <threshold>Low</threshold>
-                   <failOnError>true</failOnError>
-                   <!-- <includeFilterFile>${session.executionRootDirectory}/spotbugs-security-include.xml</includeFilterFile> -->
-                   <!--suppress UnresolvedMavenProperty -->
-                  <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml</excludeFilterFile>
-                   <plugins>
-                       <plugin>
-                           <groupId>com.h3xstream.findsecbugs</groupId>
-                           <artifactId>findsecbugs-plugin</artifactId>
-                           <!-- Auto-update to the latest stable -->
-                           <version>LATEST</version>
-                       </plugin>
-                   </plugins>
-               </configuration>
-           </plugin>
-            <plugin>
-               <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
-               <groupId>org.owasp</groupId>
-               <artifactId>dependency-check-maven</artifactId>
-               <version>6.1.6</version>
-            </plugin>
-            <plugin>
-               <groupId>org.jvnet.jaxb2.maven2</groupId>
-               <artifactId>maven-jaxb2-plugin</artifactId>
-               <version>0.14.0</version>
-               <configuration>
-                  <debug>false</debug>
-                  <strict>false</strict>
-                  <verbose>false</verbose>
-                  <removeOldOutput>true</removeOldOutput>
-               </configuration>
-            </plugin>
-            <plugin>
-               <!-- For generating HTML documentation from Markdown -->
-               <groupId>com.ruleoftech</groupId>
-               <artifactId>markdown-page-generator-plugin</artifactId>
-               <version>0.10</version>
-               <configuration>
-                  <inputEncoding>UTF-8</inputEncoding>
-                  <outputEncoding>UTF-8</outputEncoding>
-                  <pegdownExtensions>SMARTS,QUOTES,ANCHORLINKS,FENCED_CODE_BLOCKS,AUTOLINKS</pegdownExtensions>
-               </configuration>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>3.8.1</version>
-               <configuration>
-                  <release>11</release>
-                  <compilerArgument>-Xlint:deprecation</compilerArgument>
-                  <compilerArgument>-Xlint:unchecked</compilerArgument>
-               </configuration>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-source-plugin</artifactId>
-               <version>3.2.0</version>
-               <executions>
-                  <execution>
-                     <id>attach-sources</id>
-                     <goals>
-                        <goal>jar-no-fork</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-javadoc-plugin</artifactId>
-               <version>3.2.0</version>
-               <executions>
-                  <execution>
-                     <id>attach-javadocs</id>
-                     <goals>
-                        <goal>jar</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-jar-plugin</artifactId>
-               <version>3.2.0</version>
-            </plugin>
-            <plugin>
-               <artifactId>maven-surefire-plugin</artifactId>
-               <version>2.22.2</version>
-            </plugin>
-            <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-gpg-plugin</artifactId>
-               <version>1.6</version>
-               <executions>
-                  <execution>
-                     <id>sign-artifacts</id>
-                     <phase>verify</phase>
-                     <goals>
-                        <goal>sign</goal>
-                     </goals>
-                  </execution>
-               </executions>
-            </plugin>
-            <plugin>
-               <groupId>org.sonatype.plugins</groupId>
-               <artifactId>nexus-staging-maven-plugin</artifactId>
-               <version>1.6.8</version>
-               <extensions>true</extensions>
-               <configuration>
-                  <serverId>ossrh</serverId>
-                  <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                  <!-- For safety reasons, the actual release should be a manual step (through Sonatype's Nexus GUI) to allow for final check. -->
-                  <autoReleaseAfterClose>false</autoReleaseAfterClose>
-               </configuration>
-            </plugin>
-            <plugin>
-               <!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
-               <groupId>external.atlassian.jgitflow</groupId>
-               <artifactId>jgitflow-maven-plugin</artifactId>
-               <version>1.0-m5.1</version>
-               <configuration>
-                  <flowInitContext>
-                     <versionTagPrefix>release-</versionTagPrefix>
-                  </flowInitContext>
-                  <pushReleases>true</pushReleases>
-                  <useReleaseProfile>false</useReleaseProfile>
-                  <arguments>-Psonatype-oss-release</arguments>
-                  <noDeploy>false</noDeploy>
-               </configuration>
-            </plugin>
-         </plugins>
-      </pluginManagement>
-   </build>
-   <profiles>
-      <profile>
-         <!-- RELEASE PROFILE. To perform a release, run: $ mvn jgitflow:release-finish -->
-         <id>sonatype-oss-release</id>
-         <build>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.ow2.authzforce</groupId>
+    <artifactId>authzforce-ce-parent</artifactId>
+    <version>8.2.0</version>
+    <packaging>pom</packaging>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>AuthzForce - Parent of all AuthzForce components</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dynamic computation of current year for license headers -->
+        <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
+        <currentYear>${maven.build.timestamp}</currentYear>
+        <artifactId.prefix>authzforce-ce</artifactId.prefix>
+        <!-- Fix the project URL for all AuthzForce project -->
+        <project.url>https://authzforce.ow2.org</project.url>
+        <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
+        <!-- Jakarta XML Binding version -->
+        <jaxb.version>2.3.3</jaxb.version>
+        <jaxb2-basics.version>0.12.0</jaxb2-basics.version>
+        <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
+        <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
+        <slf4j.version>1.7.32</slf4j.version>
+        <cxf.version>3.5.0</cxf.version>
+        <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). -->
+        <spring-boot-starter.version>2.6.1</spring-boot-starter.version>
+        <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
+        <spring.version>5.3.14</spring.version>
+        <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
+        <logback.version>1.2.10</logback.version>
+        <spotbugs.version>4.5.3</spotbugs.version>
+    </properties>
+    <url>${project.url}</url>
+    <inceptionYear>2012</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>The AuthzForce Team</name>
+            <organization>THALES</organization>
+            <organizationUrl>http://thalesgroup.com</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:${git.url.base}/parent.git</connection>
+        <developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>${git.url.base}/parent</url>
+    </scm>
+    <modules>
+        <!-- Only common modules here, i.e. (in)direct dependencies of all other AuthzForce CE projects -->
+        <module>xmlns-model</module>
+        <module>atom-model</module>
+        <module>xacml-model</module>
+        <module>pdp-ext-model</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <!-- Third party dependencies -->
+            <dependency>
+                <!-- JAXB API. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <!-- JAXB Runtime. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
+            <!--
+            <dependency>
+               <groupId>com.sun.xml.bind</groupId>
+               <artifactId>jaxb-impl</artifactId>
+               <version>${jaxb.version}</version>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxb.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jvnet.jaxb2_commons</groupId>
+                <artifactId>jaxb2-basics-runtime</artifactId>
+                <version>${jaxb2-basics.version}</version>
+            </dependency>
+            <dependency>
+                <!-- For loading XML schemas with OASIS XML catalogs (CatalogManager) -->
+                <groupId>xml-resolver</groupId>
+                <artifactId>xml-resolver</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <!-- This version must use the same version of slfj-api used by 'logback-classic' below. -->
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring
+                   dependencies used by other AuthzForce projects. -->
+                <groupId>org.logback-extensions</groupId>
+                <artifactId>logback-ext-spring</artifactId>
+                <!-- TODO: upgrade so that logback-classic dependency version matches below -->
+                <version>0.1.5</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
+                <!-- Versions before 1.2.0 (excluded) affected by CVE-2017-5929 -->
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <!-- Replaced by jcl-over-slf4j dependency for redirecting logs to slf4j, see http://www.slf4j.org/legacy.html -->
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <!-- Version must match version used by cxf-rt-frontend-jaxrs dependency below -->
+                <version>2.1.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-client</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-service-description</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>4.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.saxon</groupId>
+                <artifactId>Saxon-HE</artifactId>
+                <version>10.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>31.0-jre</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <version>20211205</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.everit-org.json-schema</groupId>
+                <artifactId>org.everit.json.schema</artifactId>
+                <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
+                <version>1.12.1</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
+            </dependency>
+            <!-- Works with Spotbugs -->
+            <dependency>
+                <groupId>net.jcip</groupId>
+                <artifactId>jcip-annotations</artifactId>
+                <version>1.0</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-annotations</artifactId>
+                <!-- -->
+                <version>${spotbugs.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <!-- /Third party dependencies -->
+            <!-- Common AuthzForce CE dependencies. Only child modules here (see <modules>). -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
+                <!-- Version updated automatically by maven jgitflow:release-start -->
+                <version>8.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${artifactId.prefix}-atom-model</artifactId>
+                <!-- Version updated automatically by maven jgitflow:release-start -->
+                <version>8.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${artifactId.prefix}-xacml-model</artifactId>
+                <!-- Version updated automatically by maven jgitflow:release-start -->
+                <version>8.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
+                <!-- Version updated automatically by maven jgitflow:release-start -->
+                <version>8.2.0</version>
+            </dependency>
+            <!-- /Common AuthzForce CE dependencies -->
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
             <plugins>
-               <plugin>
-                  <groupId>com.mycila</groupId>
-                  <artifactId>license-maven-plugin</artifactId>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-source-plugin</artifactId>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-javadoc-plugin</artifactId>
-               </plugin>
-               <plugin>
-                  <groupId>org.apache.maven.plugins</groupId>
-                  <artifactId>maven-gpg-plugin</artifactId>
-               </plugin>
-               <plugin>
-                  <groupId>org.sonatype.plugins</groupId>
-                  <artifactId>nexus-staging-maven-plugin</artifactId>
-               </plugin>
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>4.1</version>
+                    <configuration>
+                        <properties>
+                            <!-- Values to be substituted in template -->
+                            <inceptionYear>${project.inceptionYear}</inceptionYear>
+                            <currentYear>${currentYear}</currentYear>
+                            <copyrightOwner>THALES</copyrightOwner>
+                            <projectName>AuthzForce CE</projectName>
+                        </properties>
+                        <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
+                        <header>license/alv2-header.txt</header>
+                        <strictCheck>true</strictCheck>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.15.0</version>
+                    <!-- target JDK already set by parent project's maven.compiler.target property -->
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-core</artifactId>
+                            <version>6.42.0</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>6.42.0</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>${spotbugs.version}.0</version>
+                    <configuration>
+                        <!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'Low'. -->
+                        <effort>Max</effort>
+                        <!-- Reports all bugs (other values are medium and max) -->
+                        <threshold>Low</threshold>
+                        <failOnError>true</failOnError>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <excludeFilterFile>${session.executionRootDirectory}/spotbugs-security-exclude.xml
+                        </excludeFilterFile>
+                        <plugins>
+                            <plugin>
+                                <groupId>com.h3xstream.findsecbugs</groupId>
+                                <artifactId>findsecbugs-plugin</artifactId>
+                                <!-- Auto-update to the latest stable -->
+                                <version>LATEST</version>
+                            </plugin>
+                        </plugins>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
+                    <groupId>org.owasp</groupId>
+                    <artifactId>dependency-check-maven</artifactId>
+                    <version>6.5.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jvnet.jaxb2.maven2</groupId>
+                    <artifactId>maven-jaxb2-plugin</artifactId>
+                    <version>0.14.0</version>
+                    <configuration>
+                        <debug>false</debug>
+                        <strict>false</strict>
+                        <verbose>false</verbose>
+                        <removeOldOutput>true</removeOldOutput>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <!-- For generating HTML documentation from Markdown -->
+                    <groupId>com.ruleoftech</groupId>
+                    <artifactId>markdown-page-generator-plugin</artifactId>
+                    <version>0.10</version>
+                    <configuration>
+                        <inputEncoding>UTF-8</inputEncoding>
+                        <outputEncoding>UTF-8</outputEncoding>
+                        <pegdownExtensions>SMARTS,QUOTES,ANCHORLINKS,FENCED_CODE_BLOCKS,AUTOLINKS</pegdownExtensions>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.9.0</version>
+                    <configuration>
+                        <release>11</release>
+                        <compilerArgument>-Xlint:deprecation</compilerArgument>
+                        <compilerArgument>-Xlint:unchecked</compilerArgument>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.3.1</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.2</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.0.1</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.plugins</groupId>
+                    <artifactId>nexus-staging-maven-plugin</artifactId>
+                    <version>1.6.8</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <serverId>ossrh</serverId>
+                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                        <!-- For safety reasons, the actual release should be a manual step (through Sonatype's Nexus GUI) to allow for final check. -->
+                        <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <!-- This replaces the maven-release-plugin. More info: http://jgitflow.bitbucket.org/ Tutorial: http://george-stathis.com/2013/11/09/painless-maven-project-releases-with-maven-gitflow-plugin/ -->
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
+                    <configuration>
+                        <flowInitContext>
+                            <versionTagPrefix>release-</versionTagPrefix>
+                        </flowInitContext>
+                        <pushReleases>true</pushReleases>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <arguments>-Psonatype-oss-release</arguments>
+                        <noDeploy>false</noDeploy>
+                    </configuration>
+                </plugin>
             </plugins>
-         </build>
-      </profile>
-   </profiles>
+        </pluginManagement>
+    </build>
+    <profiles>
+        <profile>
+            <!-- RELEASE PROFILE. To perform a release, run: $ mvn jgitflow:release-finish -->
+            <id>sonatype-oss-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.mycila</groupId>
+                        <artifactId>license-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
