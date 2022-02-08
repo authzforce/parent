@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ow2.authzforce</groupId>
     <artifactId>authzforce-ce-parent</artifactId>
-    <version>8.2.0</version>
+    <version>8.2.1</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -22,10 +22,10 @@
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
         <slf4j.version>1.7.32</slf4j.version>
         <cxf.version>3.5.0</cxf.version>
-        <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). -->
-        <spring-boot-starter.version>2.6.1</spring-boot-starter.version>
+        <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). 2.6.1 depends on Spring-core 5.3.13 which have 1 vulnerability. -->
+        <spring-boot-starter.version>2.6.3</spring-boot-starter.version>
         <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
-        <spring.version>5.3.14</spring.version>
+        <spring.version>5.3.15</spring.version>
         <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
         <logback.version>1.2.10</logback.version>
         <spotbugs.version>4.5.3</spotbugs.version>
@@ -219,25 +219,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.0</version>
+                <version>8.2.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-atom-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.0</version>
+                <version>8.2.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xacml-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.0</version>
+                <version>8.2.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.0</version>
+                <version>8.2.1</version>
             </dependency>
             <!-- /Common AuthzForce CE dependencies -->
         </dependencies>
