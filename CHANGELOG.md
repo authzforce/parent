@@ -2,6 +2,12 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.2.1
+### Fixed
+- CVE on Spring Core 5.3.13 used by Spring Boot 2.6.1:
+- Fix: upgraded Spring Core: 5.3.15, Spring Boot Starter: 2.6.3 (to match Spring Core version)
+
+
 ## 8.2.0
 ### Changed
 - Upgraded SLF4j to 1.7.32
