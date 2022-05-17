@@ -2,6 +2,24 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.3.0
+### Fixed
+- GH-7 : CVE on Spring 5.3.18
+
+### Changed
+- Upgraded managed versions of dependencies:
+  - Spring Core: 5.3.20
+  - SLF4j: 1.7.36
+  - Apache CXF: 3.5.2
+  - Spring Boot Starter: 2.6.7
+  - Logback: 1.2.11
+  - javax.servlet-api, renamed jakarta.servlet-api: 4.0.4
+  - Saxon-HE: 10.8
+  - Guava: 31.1
+  - org.json:json: 20220320
+  - org.everit.json.schema, renamed everit-json-schema: 1.14.1
+
+
 ## 8.2.1
 ### Fixed
 - CVE on Spring Core 5.3.13 used by Spring Boot 2.6.1:
