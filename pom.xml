@@ -17,18 +17,18 @@
         <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
         <!-- Jakarta XML Binding version -->
         <jaxb.version>2.3.3</jaxb.version>
-        <jaxb2-basics.version>0.12.0</jaxb2-basics.version>
+        <jaxb2-basics.version>0.13.1</jaxb2-basics.version>
         <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
-        <slf4j.version>1.7.32</slf4j.version>
-        <cxf.version>3.5.0</cxf.version>
+        <slf4j.version>1.7.36</slf4j.version>
+        <cxf.version>3.5.2</cxf.version>
         <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). 2.6.1 depends on Spring-core 5.3.13 which have 1 vulnerability. -->
-        <spring-boot-starter.version>2.6.3</spring-boot-starter.version>
+        <spring-boot-starter.version>2.6.7</spring-boot-starter.version>
         <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
-        <spring.version>5.3.18</spring.version>
+        <spring.version>5.3.20</spring.version>
         <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
-        <logback.version>1.2.10</logback.version>
-        <spotbugs.version>4.5.3</spotbugs.version>
+        <logback.version>1.2.11</logback.version>
+        <spotbugs.version>4.6.0</spotbugs.version>
     </properties>
     <url>${project.url}</url>
     <inceptionYear>2012</inceptionYear>
@@ -169,30 +169,30 @@
                 <version>${cxf.version}</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>4.0.1</version>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>4.0.4</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.saxon</groupId>
                 <artifactId>Saxon-HE</artifactId>
-                <version>10.6</version>
+                <version>10.8</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>31.0-jre</version>
+                <version>31.1-jre</version>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20211205</version>
+                <version>20220320</version>
             </dependency>
             <dependency>
-                <groupId>com.github.everit-org.json-schema</groupId>
-                <artifactId>org.everit.json.schema</artifactId>
+                <groupId>com.github.erosb</groupId>
+                <artifactId>everit-json-schema</artifactId>
                 <!-- This version must use the versions of artifact org.json/json and guava specified above. -->
-                <version>1.12.1</version>
+                <version>1.14.1</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
@@ -265,18 +265,18 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.15.0</version>
+                    <version>3.16.0</version>
                     <!-- target JDK already set by parent project's maven.compiler.target property -->
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-core</artifactId>
-                            <version>6.42.0</version>
+                            <version>6.45.0</version>
                         </dependency>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-java</artifactId>
-                            <version>6.42.0</version>
+                            <version>6.45.0</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -307,12 +307,12 @@
                     <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>6.5.3</version>
+                    <version>7.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb2.maven2</groupId>
                     <artifactId>maven-jaxb2-plugin</artifactId>
-                    <version>0.14.0</version>
+                    <version>0.15.1</version>
                     <configuration>
                         <debug>false</debug>
                         <strict>false</strict>
@@ -324,7 +324,7 @@
                     <!-- For generating HTML documentation from Markdown -->
                     <groupId>com.ruleoftech</groupId>
                     <artifactId>markdown-page-generator-plugin</artifactId>
-                    <version>0.10</version>
+                    <version>2.4.0</version>
                     <configuration>
                         <inputEncoding>UTF-8</inputEncoding>
                         <outputEncoding>UTF-8</outputEncoding>
@@ -334,7 +334,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.9.0</version>
+                    <version>3.10.1</version>
                     <configuration>
                         <release>11</release>
                         <compilerArgument>-Xlint:deprecation</compilerArgument>
