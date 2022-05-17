@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ow2.authzforce</groupId>
     <artifactId>authzforce-ce-parent</artifactId>
-    <version>8.2.1</version>
+    <version>8.3.0</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -17,7 +17,7 @@
         <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
         <!-- Jakarta XML Binding version -->
         <jaxb.version>2.3.3</jaxb.version>
-        <jaxb2-basics.version>0.12.0</jaxb2-basics.version>
+        <jaxb2-basics.version>0.13.1</jaxb2-basics.version>
         <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
         <slf4j.version>1.7.36</slf4j.version>
@@ -168,8 +168,8 @@
                 <artifactId>cxf-rt-rs-service-description</artifactId>
                 <version>${cxf.version}</version>
             </dependency>
-	    <dependency>
-		    <!-- Must match cxf-rt-frontend-jaxrs dependency -->
+            <dependency>
+                <!-- Must match cxf-rt-frontend-jaxrs dependency -->
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
                 <version>4.0.4</version>
@@ -220,25 +220,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.1</version>
+                <version>8.3.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-atom-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.1</version>
+                <version>8.3.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xacml-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.1</version>
+                <version>8.3.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.2.1</version>
+                <version>8.3.0</version>
             </dependency>
             <!-- /Common AuthzForce CE dependencies -->
         </dependencies>
