@@ -2,6 +2,14 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 8.4.0
+### Changed
+- Upgraded managed dependencies:
+  - Apache CXF version: 3.5.4
+  - Spring Boot Starter: 2.6.12
+  - Spring Core: 5.3.23
+
+
 ## 8.3.0
 ### Fixed
 - GH-7 : CVE on Spring 5.3.18
