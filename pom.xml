@@ -21,11 +21,11 @@
         <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
         <slf4j.version>1.7.36</slf4j.version>
-        <cxf.version>3.5.2</cxf.version>
+        <cxf.version>3.5.4</cxf.version>
         <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). 2.6.1 depends on Spring-core 5.3.13 which have 1 vulnerability. -->
-        <spring-boot-starter.version>2.6.7</spring-boot-starter.version>
+        <spring-boot-starter.version>2.6.12</spring-boot-starter.version>
         <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
-        <spring.version>5.3.20</spring.version>
+        <spring.version>5.3.23</spring.version>
         <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
         <logback.version>1.2.11</logback.version>
         <spotbugs.version>4.6.0</spotbugs.version>
@@ -308,7 +308,7 @@
                     <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>7.1.0</version>
+                    <version>7.3.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb2.maven2</groupId>
