@@ -25,7 +25,7 @@
         <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). 2.6.1 depends on Spring-core 5.3.13 which have 1 vulnerability. -->
         <spring-boot-starter.version>2.6.12</spring-boot-starter.version>
         <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
-        <spring.version>5.3.23</spring.version>
+        <spring.version>5.3.27</spring.version>
         <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
         <logback.version>1.2.11</logback.version>
         <spotbugs.version>4.6.0</spotbugs.version>
