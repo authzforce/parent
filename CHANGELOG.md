@@ -1,6 +1,12 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+## 8.4.1
+### Fixed
+- CVEs in managed dependencies by upgrading versions of: 
+  - org.json:json: 20230227
+  - org.springframework:spring-core: 5.3.27
+
 
 ## 8.4.0
 ### Changed
