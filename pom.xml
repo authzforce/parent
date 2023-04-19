@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ow2.authzforce</groupId>
     <artifactId>authzforce-ce-parent</artifactId>
-    <version>8.4.0</version>
+    <version>8.4.1</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -25,7 +25,7 @@
         <!-- This version must match the version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency (at least MAJOR.MINOR parts). 2.6.1 depends on Spring-core 5.3.13 which have 1 vulnerability. -->
         <spring-boot-starter.version>2.6.12</spring-boot-starter.version>
         <!-- Spring Core version. Must match the version of spring-boot-starter:${spring-boot-starter.version}'s spring-core dependency version (at least MAJOR.MINOR part). -->
-        <spring.version>5.3.23</spring.version>
+        <spring.version>5.3.27</spring.version>
         <!-- logback-* version, must match the version of spring-boot-starter-logging:${spring-boot-starter.version}'s logback-classic dependency (at least MAJOR.MINOR part). -->
         <logback.version>1.2.11</logback.version>
         <spotbugs.version>4.6.0</spotbugs.version>
@@ -187,7 +187,7 @@
             <dependency>
                 <groupId>org.json</groupId>
                 <artifactId>json</artifactId>
-                <version>20220320</version>
+                <version>20230227</version>
             </dependency>
             <dependency>
                 <groupId>com.github.erosb</groupId>
@@ -220,25 +220,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.4.0</version>
+                <version>8.4.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-atom-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.4.0</version>
+                <version>8.4.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xacml-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.4.0</version>
+                <version>8.4.1</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>8.4.0</version>
+                <version>8.4.1</version>
             </dependency>
             <!-- /Common AuthzForce CE dependencies -->
         </dependencies>
@@ -305,10 +305,9 @@
                     </configuration>
                 </plugin>
                 <plugin>
-                    <!-- Consider combining with Red Hat Victims and OSS Index. More info on Victims vs. Dependency-check: https://bugzilla.redhat.com/show_bug.cgi?id=1388712 -->
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>7.3.0</version>
+                    <version>8.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb2.maven2</groupId>
