@@ -19,7 +19,7 @@ package org.ow2.authzforce.xacml.identifiers;
 
 
 /**
- * XACML Version. The actual version IDs are returned by {@link XacmlAttributeCategory#ordinal()} and standard URI from XACML specification is returned by {@link XacmlAttributeCategory#value()}
+ * Standard XACML Attribute Category identifier. The standard URI from XACML specification is returned by {@link XacmlAttributeCategory#value()}
  * 
  */
 public enum XacmlAttributeCategory
