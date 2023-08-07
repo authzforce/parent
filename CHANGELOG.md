@@ -1,6 +1,19 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+
+## 8.5.0
+### Changed
+- Upgraded managed dependencies:
+    - everit-json-schema: 1.14.2
+    - guava: 32.1.2-jre
+    - Saxon-HE: 12.3
+    - Apache CXF: 3.6.1
+    - Spring Boot: 2.7.14
+    - Spring core: 5.3.29
+    - Logback: 1.2.12
+
+
 ## 8.4.1
 ### Fixed
 - CVEs in managed dependencies by upgrading versions of: 
