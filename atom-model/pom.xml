@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.ow2.authzforce</groupId>
         <artifactId>authzforce-ce-parent</artifactId>
-        <version>8.4.1</version>
+        <version>8.5.0</version>
     </parent>
     <artifactId>authzforce-ce-atom-model</artifactId>
     <packaging>jar</packaging>
@@ -59,8 +59,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
                 <configuration>
                     <verbose>false</verbose>
                     <extension>true</extension>
