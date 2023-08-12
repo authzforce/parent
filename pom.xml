@@ -12,9 +12,8 @@
         <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
         <currentYear>${maven.build.timestamp}</currentYear>
         <artifactId.prefix>authzforce-ce</artifactId.prefix>
-        <!-- Fix the project URL for all AuthzForce project -->
         <project.url>https://authzforce.ow2.org</project.url>
-        <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
+        <git.url.base>https://github.com/authzforce</git.url.base>
         <!-- Jakarta XML Binding version -->
         <jaxb.version>2.3.3</jaxb.version>
         <jaxb2-basics.version>0.13.1</jaxb2-basics.version>
@@ -211,7 +210,6 @@
             <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-annotations</artifactId>
-                <!-- -->
                 <version>${spotbugs.version}</version>
                 <optional>true</optional>
             </dependency>
@@ -259,7 +257,6 @@
                             <copyrightOwner>THALES</copyrightOwner>
                             <projectName>AuthzForce CE</projectName>
                         </properties>
-                        <!-- <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header> -->
                         <header>license/alv2-header.txt</header>
                         <strictCheck>true</strictCheck>
                     </configuration>
