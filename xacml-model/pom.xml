@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.ow2.authzforce</groupId>
         <artifactId>authzforce-ce-parent</artifactId>
-        <version>8.5.0</version>
+        <version>9.0.0</version>
     </parent>
     <artifactId>authzforce-ce-xacml-model</artifactId>
     <name>${project.groupId}:${project.artifactId}</name>
@@ -24,8 +24,10 @@
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jvnet.jaxb2_commons</groupId>
-            <artifactId>jaxb2-basics-runtime</artifactId>
+            <!-- https://github.com/highsource/jaxb-tools/wiki/Using-JAXB2-Basics-Plugins#adding-jaxb2-basics-runtime-dependency-to-your-projectjaxb2-basics-runtime -->
+            <!-- Required for -XtoString -->
+            <groupId>org.jvnet.jaxb</groupId>
+            <artifactId>jaxb-plugins-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
@@ -37,13 +39,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <scope>test</scope>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
@@ -100,6 +95,7 @@
                 <groupId>org.jvnet.jaxb</groupId>
                 <artifactId>jaxb-maven-plugin</artifactId>
                 <configuration>
+                    <specVersion>4.0.2</specVersion>
                     <verbose>false</verbose>
                     <extension>true</extension>
                     <strict>false</strict>
@@ -108,41 +104,22 @@
                         <arg>-XsimpleEquals</arg>
                         <arg>-XsimpleHashCode</arg>
                         <arg>-XtoString</arg>
-                        <!-- Replace -Xvalue-constructor, -Ximmutable and -constructorAccess=default with -immutable from immutable-xjc-plugin after this issue is fixed:
-                        https://github.com/sabomichal/immutable-xjc/issues/54 -->
-                        <!--
-                        <arg>-immutable</arg>
-                        -->
-                        <arg>-Xvalue-constructor</arg>
-                        <arg>-Ximmutable</arg>
-                        <arg>-constructorAccess=default</arg>
+                        <arg>-Ximm</arg>
+                        <arg>-Ximm-nofinalclasses</arg>
                     </args>
                     <plugins>
+                        <!-- https://github.com/highsource/jaxb-tools/wiki/Using-JAXB2-Basics-Plugins#using-jaxb-plugins-with-maven -->
+                        <!-- https://github.com/highsource/jaxb-tools/wiki/JAXB-Tools-Migration-Guide#migration-from-v2-to-v3 -->
+                        <!-- Plugin required for -XtoString, -XsimpleEquals -->
                         <plugin>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>jaxb2-basics</artifactId>
-                            <version>${jaxb2-basics.version}</version>
+                            <groupId>org.jvnet.jaxb</groupId>
+                            <artifactId>jaxb-plugins</artifactId>
+                            <version>${jaxb-plugins.version}</version>
                         </plugin>
-                        <!-- Replace jaxb2-value-constructor and jaxb2-rich-contract-plugin with immutable-xjc-plugin after this issue is fixed:
-                        https://github.com/sabomichal/immutable-xjc/issues/54
-                        Then get rid of immutable sub-classes of XACML-schema-derived classes (in authzforce-ce-core-pdp-api for instance).
-                        -->
-                        <!--
                         <plugin>
                             <groupId>com.github.sabomichal</groupId>
                             <artifactId>immutable-xjc-plugin</artifactId>
-                            <version>1.6.2</version>
-                        </plugin>
-                        -->
-                        <plugin>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>jaxb2-value-constructor</artifactId>
-                            <version>${jaxb2-value-constructor.version}</version>
-                        </plugin>
-                        <plugin>
-                            <groupId>net.codesup.util</groupId>
-                            <artifactId>jaxb2-rich-contract-plugin</artifactId>
-                            <version>2.1.0</version>
+                            <version>${immutable-xjc-plugins.version}</version>
                         </plugin>
                     </plugins>
                     <bindingDirectory>src/main/jaxb</bindingDirectory>
@@ -160,66 +137,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
-         Issues porting the maven-jaxb2-plugin to Java 11:
-         - Plugin dev seems dead: https://github.com/highsource/maven-jaxb2-plugin/issues/193
-         - Not compatible with new Jakarta XML Binding (Starting with 3.0.0, jakarta.xml.bind replaces javax.xml.bind packages): https://github.com/highsource/maven-jaxb2-plugin/issues/191
-         - Not compatible with JDK 11+: https://github.com/highsource/maven-jaxb2-plugin/issues/190, https://github.com/highsource/maven-jaxb2-plugin/issues/167
-
-         Alternative: mojohaus/jaxb2-maven-plugin
-         Supporting new Jakarta-style JAXB API: https://github.com/mojohaus/jaxb2-maven-plugin/issues/138
-
-        <groupId>org.jvnet.jaxb2.maven2</groupId>
-        <artifactId>maven-jaxb2-plugin</artifactId>
-        -->
-            <!--
-            <plugin>
-
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.5.0</version>
-                <configuration>
-                    <verbose>true</verbose>
-                    <extension>true</extension>
-                    <strict>true</strict>
-                    <laxSchemaValidation>true</laxSchemaValidation>
-                    <sources>
-                        <source>src/main/resources/xml.xsd</source>
-                    </sources>
-                    <xsdPathWithinArtifact>.</xsdPathWithinArtifact>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-    -->
-            <!-- Starting with Jaxb 3.0.0, package names have been changed to jakarta.xml.bind-->
-            <!--
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>rename-old-jaxb-package-names-for-java-11</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">
-                                    <include name="**/*.java" />
-                                  </replace>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>

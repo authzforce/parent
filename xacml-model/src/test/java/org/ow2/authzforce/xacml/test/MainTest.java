@@ -17,15 +17,15 @@
  */
 package org.ow2.authzforce.xacml.test;
 
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.Attribute;
 import oasis.names.tc.xacml._3_0.core.schema.wd_17.AttributeValueType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.ow2.authzforce.xacml.Xacml3JaxbHelper;
 
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
 import java.io.File;
 import java.io.StringReader;
@@ -38,7 +38,8 @@ import java.util.List;
 public class MainTest {
 
     @Test
-    public void test() throws JAXBException {
+    public void test() throws JAXBException
+    {
 			/*
 			 Unmarshal using Xacml3JaxbHelper
 			 */
@@ -71,8 +72,9 @@ public class MainTest {
     }
 
     /**
-     * @param args
-     * @throws JAXBException
+     * Main method
+     * @param args arguments
+     * @throws JAXBException error creating JAXB unmarshaller or unmarshalling XML
      */
     public static void main(String[] args) throws JAXBException {
         new MainTest().test();

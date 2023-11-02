@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.ow2.authzforce</groupId>
         <artifactId>authzforce-ce-parent</artifactId>
-        <version>8.5.0</version>
+        <version>9.0.0</version>
     </parent>
     <artifactId>authzforce-ce-atom-model</artifactId>
     <packaging>jar</packaging>
@@ -62,17 +62,18 @@
                 <groupId>org.jvnet.jaxb</groupId>
                 <artifactId>jaxb-maven-plugin</artifactId>
                 <configuration>
+                    <specVersion>4.0.2</specVersion>
                     <verbose>false</verbose>
                     <extension>true</extension>
                     <strict>false</strict>
                     <args>
-                        <arg>-Xvalue-constructor</arg>
+                        <arg>-Ximm</arg>
                     </args>
                     <plugins>
                         <plugin>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>jaxb2-value-constructor</artifactId>
-                            <version>${jaxb2-value-constructor.version}</version>
+                            <groupId>com.github.sabomichal</groupId>
+                            <artifactId>immutable-xjc-plugin</artifactId>
+                            <version>${immutable-xjc-plugins.version}</version>
                         </plugin>
                     </plugins>
                     <useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
@@ -91,29 +92,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Starting with Jaxb 3.0.0, package names have been changed to jakarta.xml.bind-->
-            <!--
-            <plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<id>rename-old-jaxb-package-names-for-java-11</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-                                <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">                                 
-                                    <include name="**/*.java" />
-                                  </replace>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			-->
         </plugins>
     </build>
 </project>
