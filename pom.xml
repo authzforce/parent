@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ow2.authzforce</groupId>
     <artifactId>authzforce-ce-parent</artifactId>
-    <version>9.0.1-SNAPSHOT</version>
+    <version>9.0.0</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -229,25 +229,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.1-SNAPSHOT</version>
+                <version>9.0.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-atom-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.1-SNAPSHOT</version>
+                <version>9.0.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xacml-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.1-SNAPSHOT</version>
+                <version>9.0.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.1-SNAPSHOT</version>
+                <version>9.0.0</version>
             </dependency>
             <!-- /Common AuthzForce CE dependencies -->
         </dependencies>
