@@ -2,6 +2,24 @@
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
 
+## 9.0.0
+### Changed
+- Migrated to Java 17 (as the minimum required JRE version from now on) and JAXB 4.0 (javax.xml.bind packages replaced with jakarta.xml.bind)
+- Upgraded managed dependencies: 
+  - jaxb-runtime: 4.0.4
+  - jakarta.mail-api: 2.1.2
+  - jakarta.mail: 2.0.2
+  - Apache CXF: 4.0
+  - Spring Boot: 3.0.10
+  - Spring Core: 6.0.11
+  - Slf4j: 2.0.7
+  - Logback: 1.4.11
+  - org.json:json: 20231013
+  - everit-json-schema: 1.14.3
+  - guava 32.1.3
+  - jakarta.servlet-api 3.0.0
+
+
 ## 8.5.0
 ### Changed
 - Upgraded managed dependencies:

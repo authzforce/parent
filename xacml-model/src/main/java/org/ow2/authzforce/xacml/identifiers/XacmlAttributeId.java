@@ -93,7 +93,7 @@ public enum XacmlAttributeId
 	/**
 	 * The standard URI for the resource's scope in XACML v3.0 (resp. v2.0) multiple decision (resp. resource) profile.
 	 *
-	 * @see XACMLResourceScope possible scopes
+	 * @see XacmlResourceScope possible scopes
 	 */
 	XACML_2_0_RESOURCE_SCOPE("urn:oasis:names:tc:xacml:2.0:resource:scope"),
 	/**

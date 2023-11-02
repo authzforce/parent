@@ -29,7 +29,7 @@ public enum XacmlVersion
 	 */
 	V1_0("urn:oasis:names:tc:xacml:1.0:policy"),
 
-	/**
+	/*
 	 * XACML 1.1 (which isn't a formal release so has no namespace string, but still exists as a
 	 * separate specification)
 	 */
