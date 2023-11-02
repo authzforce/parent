@@ -63,9 +63,9 @@
 					</args>
 					<plugins>
 						<plugin>
-							<groupId>org.jvnet.jaxb2_commons</groupId>
-							<artifactId>jaxb2-value-constructor</artifactId>
-							<version>${jaxb2-value-constructor.version}</version>
+							<groupId>org.jvnet.jaxb</groupId>
+							<artifactId>jaxb-plugins</artifactId>
+							<version>${jaxb-plugins.version}</version>
 						</plugin>
 					</plugins>
 					<bindingDirectory>src/main/jaxb</bindingDirectory>
@@ -86,29 +86,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- Starting with Jaxb 3.0.0, package names have been changed to jakarta.xml.bind-->
-			<!--
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<id>rename-old-jaxb-package-names-for-java-11</id>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-                                <replace token= "javax.xml.bind" value="jakarta.xml.bind" dir="${project.basedir}/target/generated-sources/xjc">                                 
-                                    <include name="**/*.java" />
-                                  </replace>
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>

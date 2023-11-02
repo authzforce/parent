@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jaxb:bindings version="2.1" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<!-- JAXB version must be 3.0 for jaxb-maven-plugin 4.x -->
+<jaxb:bindings jaxb:version="3.0" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" elementFormDefault="qualified">
 
 	<jaxb:globalBindings fixedAttributeAsConstantProperty="true">

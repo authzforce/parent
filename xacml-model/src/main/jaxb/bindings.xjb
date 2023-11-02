@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-	jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.1">
+<!-- JAXB version must be 3.0 for jaxb-maven-plugin 4.x -->
+<jaxb:bindings jaxb:version="3.0" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jaxb:extensionBindingPrefixes="xjc">
 	<jaxb:bindings schemaLocation="../resources/xacml-core-v3-schema-wd-17.xsd">
 	<!-- If you want to generate interfaces for all schema-derived classes, switch generateValueClass to 'false'. -->
 		<jaxb:globalBindings generateMixedExtensions="true" generateValueClass="true" >

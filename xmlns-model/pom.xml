@@ -47,17 +47,6 @@
 					</execution>
 				</executions>
 			</plugin>
-				<!--
-				 Issues porting the maven-jaxb2-plugin to Java 11:
-				 - Plugin dev seems dead: https://github.com/highsource/maven-jaxb2-plugin/issues/193
-				 - Not compatible with new Jakarta XML Binding (starting with v3.0.0, jakarta.xml.bind replaces javax.xml.bind packages): https://github.com/highsource/maven-jaxb2-plugin/issues/191
-				 - Not compatible with JDK 11+: https://github.com/highsource/maven-jaxb2-plugin/issues/190, https://github.com/highsource/maven-jaxb2-plugin/issues/167
-
-				 Alternatives:
-				 - JAXB tooling artifacts (jaxb-xjc): https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates
-				 - mojohaus/jaxb2-maven-plugin: Supporting new Jakarta-style JAXB API: https://github.com/mojohaus/jaxb2-maven-plugin/issues/138
-				 - jax-maven-plugin (fixes issues in two above alternatives) https://github.com/davidmoten/jax-maven-plugin
-				-->
 			<plugin>
 				<groupId>org.jvnet.jaxb</groupId>
 				<artifactId>jaxb-maven-plugin</artifactId>
@@ -78,62 +67,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- Invoke tooling API (Java 11) to generate Java sources from schema. 2 methods: using exec-maven-plugin OR jaxb2-maven-plugin-->
-			<!--
-					<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-xjc</artifactId>
-			<version>${jaxb.version}</version>
-			<scope>compile</scope>
-		</dependency>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<execution>
-					<id>xjc</id>
-					<goals>
-						<goal>exec</goal>
-					</goals>
-					<configuration>
-						<executable>java</executable>
-						<arguments>
-							<argument>-module-path</argument>
-							<modulepath />
-							<argument>-m</argument>
-							<argument>com.sun.tools.xjc</argument>
-							<argument>-p</argument>
-							<argument>com.example</argument>
-							<argument>-d</argument>
-							<argument>${project.build.directory}/generated-sources</argument>
-							<argument>${project.build.directory}/classes/schema.xsd</argument>
-						</arguments>
-					</configuration>
-				</execution>
-			</plugin>
-
-<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>2.5.0</version>
-				<configuration>
-					<verbose>true</verbose>
-					<extension>true</extension>
-					<laxSchemaValidation>false</laxSchemaValidation>
-					<sources>
-						<source>src/main/resources/xml.xsd</source>
-					</sources>
-					<xsdPathWithinArtifact>.</xsdPathWithinArtifact>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>xjc</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			-->
 		</plugins>
 	</build>
 </project>

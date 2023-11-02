@@ -16,19 +16,21 @@
         <project.url>https://authzforce.ow2.org</project.url>
         <git.url.base>https://gitlab.ow2.org/authzforce</git.url.base>
         <!-- Jakarta XML Binding version -->
-        <jaxb.version>2.3.3</jaxb.version>
-        <jaxb2-basics.version>0.13.1</jaxb2-basics.version>
-        <jaxb2-value-constructor.version>3.0</jaxb2-value-constructor.version>
-        <!-- CXF 4.x moved Jakarta Mail 2.0, Jakarta XML Binding 3.0 -->
-        <cxf.version>3.6.1</cxf.version>
+        <jaxb.version>4.0.0</jaxb.version>
+        <!-- jaxb-plugins-runtime:${jaxb-plugins.version} mut be compatible with JAXB ${jaxb.version}. -->
+        <jaxb-plugins.version>4.0.0</jaxb-plugins.version>
+        <!-- com.github.sabomichal:immutable-xjc-plugin version, must be compatible with JAXB ${jaxb.version}. -->
+        <immutable-xjc-plugins.version>2.0.2</immutable-xjc-plugins.version>
+        <!-- CXF 4.x depends on Spring 6 which requires Java 17 -->
+        <cxf.version>4.0.3</cxf.version>
         <!-- This version must match the MAJOR.MINOR version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency. -->
-        <spring-boot.version>2.7.14</spring-boot.version>
-        <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by spring-boot-starter-logging version used by cxf-spring-boot-starter-jaxrs:${cxf.version}. (All 4.3.x versions up to 4.3.16 are affected by CVEs.) -->
-        <slf4j.version>1.7.36</slf4j.version>
-        <!-- Spring Core version. Must match the MAJOR.MINOR version of spring-boot-starter:${spring-boot.version}'s spring-core dependency version. -->
-        <spring.version>5.3.29</spring.version>
-        <!-- logback-* version, must match the MAJOR.MINOR version of spring-boot-starter-logging:${spring-boot.version}'s logback-classic dependency. -->
-        <logback.version>1.2.12</logback.version>
+        <spring-boot.version>3.0.10</spring-boot.version>
+        <!-- Spring Core version. Must match the MAJOR.MINOR version of spring-core used by spring-boot-starter:${spring-boot.version}. -->
+        <spring.version>6.0.11</spring.version>
+        <!-- logback-* version, must match the MAJOR.MINOR version of logback-classic used by spring-boot-starter-logging:${spring-boot.version} . -->
+        <logback.version>1.4.11</logback.version>
+        <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by logback-classic:${logback.version} -->
+        <slf4j.version>2.0.7</slf4j.version>
         <spotbugs.version>4.7.3</spotbugs.version>
     </properties>
     <url>${project.url}</url>
@@ -63,28 +65,36 @@
         <dependencies>
             <!-- Third party dependencies -->
             <dependency>
+                <!-- For validation of XACML RFC822Name (email address) -->
+                <groupId>org.eclipse.angus</groupId>
+                <artifactId>jakarta.mail</artifactId>
+                <version>2.0.2</version>
+            </dependency>
+            <dependency>
+                <!-- For validation of XACML RFC822Name (email address) -->
+                <groupId>jakarta.mail</groupId>
+                <artifactId>jakarta.mail-api</artifactId>
+                <!-- Must match dependency version of jakarta.mail above -->
+                <version>2.1.2</version>
+            </dependency>
+            <dependency>
                 <!-- JAXB API. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
                 <groupId>jakarta.xml.bind</groupId>
                 <artifactId>jakarta.xml.bind-api</artifactId>
                 <version>${jaxb.version}</version>
             </dependency>
-            <!-- JAXB Runtime. More info: https://eclipse-ee4j.github.io/jaxb-ri/2.3.3/docs/ch03.html#deployment-maven-coordinates -->
-            <!--
-            <dependency>
-               <groupId>com.sun.xml.bind</groupId>
-               <artifactId>jaxb-impl</artifactId>
-               <version>${jaxb.version}</version>
-            </dependency>
-            -->
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>${jaxb.version}</version>
+                <!-- Must match jaxb.version (major/minor) -->
+                <version>4.0.4</version>
             </dependency>
             <dependency>
-                <groupId>org.jvnet.jaxb2_commons</groupId>
-                <artifactId>jaxb2-basics-runtime</artifactId>
-                <version>${jaxb2-basics.version}</version>
+                <!-- https://github.com/highsource/jaxb-tools/wiki/Using-JAXB2-Basics-Plugins#adding-jaxb2-basics-runtime-dependency-to-your-projectjaxb2-basics-runtime -->
+                <!-- Required for -XtoString, used in multiple modules (xacml-model, pdp-ext-model -->
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-plugins-runtime</artifactId>
+                <version>${jaxb-plugins.version}</version>
             </dependency>
             <dependency>
                 <!-- For loading XML schemas with OASIS XML catalogs (CatalogManager) -->
@@ -152,7 +162,7 @@
                 <groupId>jakarta.ws.rs</groupId>
                 <artifactId>jakarta.ws.rs-api</artifactId>
                 <!-- Version must match version used by cxf-rt-frontend-jaxrs:${cxf.version} dependency below -->
-                <version>2.1.6</version>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
@@ -173,7 +183,7 @@
                 <!-- Must match cxf-rt-frontend-jaxrs dependency -->
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
-                <version>4.0.4</version>
+                <version>5.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.saxon</groupId>
@@ -183,18 +193,18 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>32.1.2-jre</version>
-            </dependency>
-            <dependency>
-                <groupId>org.json</groupId>
-                <artifactId>json</artifactId>
-                <version>20230227</version>
+                <version>32.1.3-jre</version>
             </dependency>
             <dependency>
                 <groupId>com.github.erosb</groupId>
                 <artifactId>everit-json-schema</artifactId>
-                <!-- This version must use the versions of artifact org.json/json specified above. -->
-                <version>1.14.2</version>
+                <version>1.14.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.json</groupId>
+                <artifactId>json</artifactId>
+                <!-- Mist match MAJOR.MINOR version used by everit-json-schema above -->
+                <version>20231013</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
@@ -250,7 +260,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>4.2</version>
+                    <version>4.3</version>
                     <configuration>
                         <properties>
                             <!-- Values to be substituted in template -->
@@ -285,7 +295,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>${spotbugs.version}.0</version>
+                    <version>${spotbugs.version}.6</version>
                     <configuration>
                         <!-- Enables analysis which takes more memory but finds more bugs. If you run out of memory, changes the value of the effort element to 'Low'. -->
                         <effort>Max</effort>
@@ -308,17 +318,12 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.3.1</version>
+                    <version>8.4.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb</groupId>
                     <artifactId>jaxb-maven-plugin</artifactId>
-                    <!-- v2.x only supports JAXB 2.3
-                    TOOO: wait for v3 of the plugin which should support later JAXB: https://github.com/highsource/jaxb-tools/issues/253,
-                    https://github.com/highsource/jaxb-tools/issues/199
-                     or try https://github.com/phax/maven-jaxb2-plugin for later JAXB versions
-                     -->
-                    <version>2.0.3</version>
+                    <version>4.0.0</version>
                     <configuration>
                         <debug>false</debug>
                         <strict>false</strict>
@@ -342,7 +347,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.11.0</version>
                     <configuration>
-                        <release>11</release>
+                        <!-- Spring 6 requires Java 17+ -->
+                        <release>17</release>
                         <compilerArgument>-Xlint:deprecation</compilerArgument>
                         <compilerArgument>-Xlint:unchecked</compilerArgument>
                     </configuration>
@@ -363,7 +369,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
@@ -380,7 +386,7 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
