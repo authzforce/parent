@@ -52,8 +52,9 @@ public enum XacmlAttributeCategory
 	
 	/**
 	 * Resource Category
-	 * 
+	 * <p>
 	 * urn:oasis:names:tc:xacml:3.0:attribute-category:resource
+	 * </p>
 	 */
 	XACML_3_0_RESOURCE("urn:oasis:names:tc:xacml:3.0:attribute-category:resource"),
 	

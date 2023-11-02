@@ -95,7 +95,7 @@ public enum XacmlDatatypeId
 	XPATH_EXPRESSION("urn:oasis:names:tc:xacml:3.0:data-type:xpathExpression");
 
 	/**
-	 * Prefix of URI of XML schema built-in datatypes (used in XACML), up to the '#' included: {@value #XML_SCHEMA_URI_PREFIX}
+	 * Prefix of URI of XML schema built-in datatypes (used in XACML), up to the '#' included
 	 */
 	public static final String XML_SCHEMA_URI_PREFIX = "http://www.w3.org/2001/XMLSchema#";
 
