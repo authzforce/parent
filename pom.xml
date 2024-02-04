@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ow2.authzforce</groupId>
     <artifactId>authzforce-ce-parent</artifactId>
-    <version>9.0.0</version>
+    <version>9.1.0</version>
     <packaging>pom</packaging>
     <name>${project.groupId}:${project.artifactId}</name>
     <description>AuthzForce - Parent of all AuthzForce components</description>
@@ -25,9 +25,9 @@
         <!-- This version must match the MAJOR.MINOR version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency. -->
         <spring-boot.version>3.0.10</spring-boot.version>
         <!-- Spring Core version. Must match the MAJOR.MINOR version of spring-core used by spring-boot-starter:${spring-boot.version}. -->
-        <spring.version>6.0.11</spring.version>
+        <spring.version>6.1.3</spring.version>
         <!-- logback-* version, must match the MAJOR.MINOR version of logback-classic used by spring-boot-starter-logging:${spring-boot.version} . -->
-        <logback.version>1.4.11</logback.version>
+        <logback.version>1.4.14</logback.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by logback-classic:${logback.version} -->
         <slf4j.version>2.0.7</slf4j.version>
         <spotbugs.version>4.7.3</spotbugs.version>
@@ -119,18 +119,9 @@
                 <version>${slf4j.version}</version>
             </dependency>
             <dependency>
-                <!-- https://github.com/qos-ch/logback-extensions/wiki/Spring. Used by authzforce webapp for configuring logback with Spring. Declared here to make sure version matches with other logback/spring
-                   dependencies used by other AuthzForce projects. -->
-                <groupId>org.logback-extensions</groupId>
-                <artifactId>logback-ext-spring</artifactId>
-                <!-- TODO: upgrade so that logback-classic dependency version matches below -->
-                <version>0.1.5</version>
-            </dependency>
-            <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <!-- This version must match the version used by the one of 'logback-ext-spring' above. -->
-                <!-- Versions before 1.2.0 (excluded) affected by CVE-2017-5929 -->
                 <version>${logback.version}</version>
             </dependency>
             <dependency>
@@ -229,25 +220,25 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xmlns-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.0</version>
+                <version>9.1.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-atom-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.0</version>
+                <version>9.1.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-xacml-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.0</version>
+                <version>9.1.0</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>${artifactId.prefix}-pdp-ext-model</artifactId>
                 <!-- Version updated automatically by maven jgitflow:release-start -->
-                <version>9.0.0</version>
+                <version>9.1.0</version>
             </dependency>
             <!-- /Common AuthzForce CE dependencies -->
         </dependencies>
@@ -315,7 +306,7 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>8.4.2</version>
+                    <version>9.0.9</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb</groupId>
