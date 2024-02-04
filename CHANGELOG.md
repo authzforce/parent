@@ -1,6 +1,13 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+## 9.1.0
+### Changed
+- Upgraded managed dependencies:
+  - Spring Core: 6.1.3
+  - Logback: 1.4.14
+- Removed from managed dependencies: logback-ext-spring
+
 
 ## 9.0.0
 ### Changed
