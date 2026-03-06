@@ -56,7 +56,7 @@ public enum XacmlStatusCode
 		return value;
 	}
 
-	private XacmlStatusCode(final String v)
+	XacmlStatusCode(final String v)
 	{
 		value = v;
 	}
