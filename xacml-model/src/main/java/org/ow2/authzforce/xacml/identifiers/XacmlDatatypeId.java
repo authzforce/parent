@@ -116,7 +116,7 @@ public enum XacmlDatatypeId
 		return value;
 	}
 
-	private XacmlDatatypeId(final String v)
+	XacmlDatatypeId(final String v)
 	{
 		value = v;
 	}

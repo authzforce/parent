@@ -1,6 +1,27 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+## 9.2.0
+### Changed
+- Upgraded managed versions of dependencies:
+    - jaxb: 4.0.4
+    - jaxb-plugins: 4.0.12
+    - immutable-xjc-plugins: 2.0.7
+    - Apache CXF: 4.1.5
+    - Spring boot: 3.4.13
+    - Spring core version: 6.2.15
+    - Logback: 1.5.32
+    - SLF4J: 2.0.17
+    - jakarta.mail-api: 2.1.5
+    - jakarta.mail: 2.0.5
+    - jaxb-runtime: 4.0.6
+    - jakarta.ws.rs-api: 3.1.0
+    - jakarta.servlet-api: 6.0.0
+    - guava: 33.5.0-jre
+    - everit-json-schema: 1.14.6
+    - org.json:json: 20250107
+  
+
 ## 9.1.0
 ### Changed
 - Upgraded managed dependencies:

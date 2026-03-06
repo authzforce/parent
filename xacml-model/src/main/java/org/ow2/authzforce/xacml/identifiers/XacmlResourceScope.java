@@ -51,7 +51,7 @@ public enum XacmlResourceScope
 		return value;
 	}
 
-	private XacmlResourceScope(final String v)
+	XacmlResourceScope(final String v)
 	{
 		value = v;
 	}

@@ -216,7 +216,7 @@ public enum XacmlNodeName
 		return value;
 	}
 
-	private XacmlNodeName(final String v)
+	XacmlNodeName(final String v)
 	{
 		value = v;
 	}
