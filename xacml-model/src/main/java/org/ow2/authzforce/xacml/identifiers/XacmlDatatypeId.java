@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2024 THALES.
+ * Copyright 2012-2026 THALES.
  *
  * This file is part of AuthzForce CE.
  *
@@ -116,7 +116,7 @@ public enum XacmlDatatypeId
 		return value;
 	}
 
-	private XacmlDatatypeId(final String v)
+	XacmlDatatypeId(final String v)
 	{
 		value = v;
 	}
