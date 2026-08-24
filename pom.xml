@@ -12,7 +12,7 @@
         <maven.build.timestamp.format>yyyy</maven.build.timestamp.format>
         <currentYear>${maven.build.timestamp}</currentYear>
         <artifactId.prefix>authzforce-ce</artifactId.prefix>
-        <project.url>https://authzforce.ow2.org</project.url>
+        <homepage.url>https://authzforce.ow2.org</homepage.url>
         <git.url.base>https://github.com/authzforce</git.url.base>
         <!-- Jakarta XML Binding version (jakarta.xml.bind-api) -->
         <jaxb.version>4.0.4</jaxb.version>
@@ -21,18 +21,18 @@
         <!-- com.github.sabomichal:immutable-xjc-plugin version, must be compatible with JAXB ${jaxb.version}. -->
         <immutable-xjc-plugins.version>2.0.7</immutable-xjc-plugins.version>
         <!-- CXF 4.x depends on Spring 6 which requires Java 17 -->
-        <cxf.version>4.1.5</cxf.version>
+        <cxf.version>4.2.3</cxf.version>
         <!-- This version must match the MAJOR.MINOR version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency. -->
-        <spring-boot.version>3.4.13</spring-boot.version>
+        <spring-boot.version>4.1.1</spring-boot.version>
         <!-- Spring Core version. Must match the MAJOR.MINOR version of spring-core used by spring-boot-starter:${spring-boot.version}. -->
-        <spring.version>6.2.15</spring.version>
+        <spring.version>7.0.9</spring.version>
         <!-- logback-* version, must match the MAJOR.MINOR version of logback-classic used by spring-boot-starter-logging:${spring-boot.version} . -->
-        <logback.version>1.5.32</logback.version>
+        <logback.version>1.5.38</logback.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by logback-classic:${logback.version} -->
         <slf4j.version>2.0.17</slf4j.version>
         <spotbugs.version>4.9.8</spotbugs.version>
     </properties>
-    <url>${project.url}</url>
+    <url>${homepage.url}</url>
     <inceptionYear>2012</inceptionYear>
     <licenses>
         <license>
@@ -152,7 +152,7 @@
                 <groupId>jakarta.ws.rs</groupId>
                 <artifactId>jakarta.ws.rs-api</artifactId>
                 <!-- Version must match version used by cxf-rt-frontend-jaxrs:${cxf.version} dependency below -->
-                <version>3.1.0</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.cxf</groupId>
@@ -173,12 +173,12 @@
                 <!-- Must match cxf-rt-frontend-jaxrs dependency -->
                 <groupId>jakarta.servlet</groupId>
                 <artifactId>jakarta.servlet-api</artifactId>
-                <version>6.0.0</version>
+                <version>6.1.0</version>
             </dependency>
             <dependency>
                 <groupId>net.sf.saxon</groupId>
                 <artifactId>Saxon-HE</artifactId>
-                <version>12.3</version>
+                <version>12.10</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -306,7 +306,10 @@
                 <plugin>
                     <groupId>org.owasp</groupId>
                     <artifactId>dependency-check-maven</artifactId>
-                    <version>12.2.0</version>
+                    <version>13.0.0</version>
+                    <configuration>
+                        <ossIndexServerId>sonatype-guide</ossIndexServerId>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.jvnet.jaxb</groupId>

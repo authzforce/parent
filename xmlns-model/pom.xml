@@ -8,7 +8,7 @@
 	<artifactId>authzforce-ce-xmlns-model</artifactId>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZForce - "xml:" Namespace Model. XML schema from http://www.w3.org/2001/xml.xsd and corresponding XJC episode that is useable for JAXB class generation from XSD importing xml.xsd.</description>
-	<url>${project.url}</url>
+	<url>${parent.url}</url>
 	<scm>
 		<connection>scm:git:${git.url.base}/parent.git</connection>
 		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>

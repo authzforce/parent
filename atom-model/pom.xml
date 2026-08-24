@@ -11,7 +11,7 @@
     <description>AuthZForce - Java model (JAXB) for Atom Syndication format (IETF RFC 4287 and 6573) (XML schema
         included)
     </description>
-    <url>${project.url}</url>
+    <url>${parent.url}</url>
     <scm>
         <connection>scm:git:${git.url.base}/parent.git</connection>
         <developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
