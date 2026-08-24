@@ -23,13 +23,13 @@
         <!-- CXF 4.x depends on Spring 6 which requires Java 17 -->
         <cxf.version>4.2.3</cxf.version>
         <!-- This version must match the MAJOR.MINOR version of cxf-spring-boot-starter-jaxrs:${cxf.version}'s spring-boot-starter dependency. -->
-        <spring-boot.version>4.1.1</spring-boot.version>
+        <spring-boot.version>4.2.0-M1</spring-boot.version>
         <!-- Spring Core version. Must match the MAJOR.MINOR version of spring-core used by spring-boot-starter:${spring-boot.version}. -->
-        <spring.version>7.0.9</spring.version>
+        <spring.version>7.1.0-M1</spring.version>
         <!-- logback-* version, must match the MAJOR.MINOR version of logback-classic used by spring-boot-starter-logging:${spring-boot.version} . -->
-        <logback.version>1.5.38</logback.version>
+        <logback.version>1.6.3</logback.version>
         <!-- This version must match the MAJOR.MINOR parts of the slf4j version used by logback-classic:${logback.version} -->
-        <slf4j.version>2.0.17</slf4j.version>
+        <slf4j.version>2.0.18</slf4j.version>
         <spotbugs.version>4.9.8</spotbugs.version>
     </properties>
     <url>${homepage.url}</url>
