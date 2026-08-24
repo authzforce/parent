@@ -1,6 +1,18 @@
 # Change log
 All notable changes to this project are documented in this file following the [Keep a CHANGELOG](http://keepachangelog.com) conventions.
 
+
+## 9.3.0
+### Changed
+- Uprgraded managed dependencies:
+  * Apache CXF: 4.2.3
+  * Spring Boot: 4.1.1
+  * Spring Core: 7.0.9
+  * Logback: 1.5.38
+  * Jakarta RESTful WS API: 4.0.0
+  * Jakarta Servlet API: 6.1.0
+  * Saxon HE: 12.10
+
 ## 9.2.0
 ### Changed
 - Upgraded managed versions of dependencies:

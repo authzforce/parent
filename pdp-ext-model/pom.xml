@@ -3,12 +3,12 @@
 	<parent>
 		<groupId>org.ow2.authzforce</groupId>
 		<artifactId>authzforce-ce-parent</artifactId>
-		<version>9.2.0</version>
+		<version>9.3.0</version>
 	</parent>
 	<artifactId>authzforce-ce-pdp-ext-model</artifactId>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>AuthZForce - Base datamodel of Authorization PDP extensions, e.g. as attribute finders. Used by FIWARE Authorization PDP Generic Enabler API specification and its reference implementation, more specifically AuthZForce Core engine.</description>
-	<url>${project.url}</url>
+	<url>${parent.url}</url>
 	<scm>
 		<connection>scm:git:${git.url.base}/parent.git</connection>
 		<developerConnection>scm:git:${git.url.base}/parent.git</developerConnection>
